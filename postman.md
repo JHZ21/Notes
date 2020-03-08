@@ -1,0 +1,8 @@
+# postman
+
+
+
+* [Postman Post请求上传文件](https://blog.csdn.net/maowendi/article/details/80537304)
+
+* [postman中请求参数为数组类型](http://www.imooc.com/qadetail/304257?t=483939)
+

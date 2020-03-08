@@ -1,0 +1,162 @@
+# Vue 2.x
+
+
+
+## 生命周期
+
+|   生命周期   | 响应类型                                                     |
+| :----------: | ------------------------------------------------------------ |
+| beforeCreate | 拿不到任何信息，无法篡改数据，一般做loding，这个时候的vue实例还什么都没有，但是$route对象是存在的，可以根据路由信息进行重定向之类的操作 |
+|   created    | $el，没有初始化，数据已加载完成，阔以篡改数据，并更新，不会触发，，在这结束，还做一些初始化，实现函数自执行，ref属性内容为空数组 |
+| beforeMount  | $el已被初始化,，数据已加载完成，阔以篡改数据，并更新，不会触发beforeUpdate，updated，在挂载开始之前被调用，beforeMount之前，会找到对应的template，并编译成render函数 |
+|   mounted    | $el，已被初始化，数据已加载完成，阔以篡改数据，并更新，并且触发，，在这发起后端请求，拿回数据，配合路由钩子做一些事情，ref属性可以访问 |
+
+
+
+
+
+
+
+## 传同步值，可以prop 传个对象
+
+> 利用对象属性，同源，达到同步效果
+
+
+
+## mixins
+
+> 默认规则如下
+
+* data 冲突，取组件的
+
+* 钩子函数 和 watch （如，created）冲突,  `混用`
+
+  混入对象先调用，组件再调用
+
+* methods 、components 和 directives， 冲突时，取组件的
+
+> 混入规则，可以自定义
+>
+> ```js
+> Vue.config.optionMergeStrategies.myOption = function (toVal, fromVal) {
+>   // 返回合并后的值
+> }
+> ```
+
+
+
+
+
+## computed
+
+>  计算属性是属性，不能加（） 
+>
+> method 需要加 （）
+
+
+
+### (ts)响应属性(data)不赋初值，则视图层不会响应！！
+
+```javascript
+// lang=ts  
+steps_objs: StepsObjType[] = [] // 数据修改时，视图面可以响应
+ steps_objs!: StepsObjType[]  // 无初值， 则未监听，导致视图无响应
+```
+
+详情可看文章最后总结 [TypeScript显式赋值断言导致Vue属性非响应](https://blog.csdn.net/HermitSun/article/details/90386504)
+
+
+
+## :key
+
+> 使得数组元素对应的dom, 不会被复用。
+>
+> 使用有特征的，不会被被重复，如id,  或者 自己生成随机数，
+>
+> 不能用 index, 数组下标， dom仍会被复用
+
+
+
+## 不要随意在别人的组件 slot 放元素，否则可能出奇怪的bug
+
+
+
+##  prop：avoid mutating abug prop directly 
+
+> since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop's value.
+>
+> * 不要直接重写prop的值,  若要重写， 应使用基于prop 值 的 data 或 computed 属性
+> * 也不能赋默认值
+
+
+
+
+
+## [使用函数便捷导入多个组件 代码](https://github.com/chrisvfritz/vue-enterprise-boilerplate/blob/master/src/components/_globals.js)
+
+
+
+## watch
+
+```javascript
+watch:{
+       a:{
+           //执行的函数
+           // 普通函数里的this 指向ueComponent对象, ()=>{} 箭头函数的this总是指向词				法作用域，也就是外层调用者obj。 所以用箭头函数，无法直接通过this获取vue对象
+           handler: "print",  
+           // 默认false,  true 时立即执行，即创建时也会执行一次函数    
+           immediate: true,
+           // 默认false, 只是浅监听一层，为true，则深度监听(许多层，及二层及以上的属性)，里面任何值变化，都			会执行函数    
+           deep: true
+       }
+  },
+```
+
+```
+  
+
+   
+* ## $attrs 和 $listeners
+
+* ### .sync
+
+  ![][p0]
+
+  > props: 使得 foo -> bar , 父组件的值foo 流向子组件的值bar
+  >
+  > this.$emit("updata:foo", newValue) 使得, 子组件foo的新值, 通过函数复制给父组件的bar
+
+
+
+
+
+[p0]:http://proudmodest.cn/img/vue/sync.jpg
+
+
+```
+
+```javascript
+// vue数据层次太多，render函数没有自动更新慢
+	Vue.set(object, key, value)
+
+/*  this.$forceUpdate()虽然能解决但问题并不出现在这里.vue虽然是响应式的.但受到javascript的限制，Vue不能检测到对象属性的添加或删除，因为vue在初始化实列时将属性转为getter/setter，所以属性必须在data对象上才能让vue转换它。可以使用 Vue.set(object, key, value)方法将响应属性添加到嵌套的对象上.实现改变数据自动渲染 */
+```
+
+
+
+## ref
+
+>ref 可以绑定元素对象，但当使用v-for时， 同一个 ref 绑定了 多个item时，只能通过数组形式来访问各个item，即
+
+```javascript
+this.$refs.itemRef[0];
+this.$refs.itemRef[1];
+.......
+```
+
+
+
+
+
+
+
