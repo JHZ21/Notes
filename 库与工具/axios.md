@@ -2,6 +2,12 @@
 
 
 
+## 跨域时, 默认不携带cookie
+
+
+
+
+
 ## use async/await
 
 ```js

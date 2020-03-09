@@ -2,6 +2,43 @@
 
 # Vue-cli
 
+> [vue.config.js](https://cli.vuejs.org/zh/config/#vue-config-js)
+
+
+
+
+
+## deserver
+
+> [devServer](https://cli.vuejs.org/zh/config/#devserver)
+
+* example
+
+```js
+module.exports = {
+  devServer: {
+    host: "localhost",
+    port: 80,
+    disableHostCheck: true, // 检查host
+    proxy: {    			//代理
+      "/apis": {
+        target: "http://localhost:3000",
+        secure: false,		// https接口需要设为true
+        changeOrigin: true,  //允许跨域
+        pathRewrite: { 		// 重写
+          "^/apis": ""
+        }
+      }
+    }
+  }
+}
+```
+
+* application
+  * [vue-cli本地环境API代理设置和解决跨域 ,如cookie](https://segmentfault.com/a/1190000011007043)
+
+
+
 
 
 ## 访问静态文件
