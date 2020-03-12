@@ -16,6 +16,14 @@
 
 
 
+### expires
+
+> expires 设置为session, 会话关闭时销毁
+>
+> 
+
+
+
 ### httponly = true
 
 > 请求后端，来覆盖清楚cookie
