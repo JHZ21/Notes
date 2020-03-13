@@ -6,3 +6,4 @@
 
 * [postman中请求参数为数组类型](http://www.imooc.com/qadetail/304257?t=483939)
 
+* [Postman请求Https接口](https://blog.csdn.net/ONS_cukuyo/article/details/79172242)

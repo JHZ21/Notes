@@ -280,3 +280,36 @@ originalText += decipher.final('utf8')
 
 ## 传输安全
 
+
+
+### HTTP传输窃听
+
+##### 查看链路
+
+> windows: ` tracert www.baidu.com`
+>
+> mac:  `traceroute ww.baidu.com`
+
+
+
+### HTTPS 
+
+> TLS (SSL) 加密
+
+![](./images/safety_0.png)
+
+> [vue-cli如何支持本地https](https://www.jianshu.com/p/dabe3c249f3e)
+>
+> 若遇到443 无法使用，可能是其他应用占用了，如虚拟机，哭。。
+>
+> [vmware-hostd.exe 占用443端口](https://blog.csdn.net/wulove52/article/details/61916090)
+>
+> http 默认端口80
+>
+> https 默认端口443
+>
+> [那些默认端口](https://www.cnblogs.com/aspirant/p/11727120.html)
+>
+> [各种常用的默认端口号 总结](https://www.cnblogs.com/sablier/p/10699382.html)
+>
+> 前端https 不安全还可以访问，后端https不安全(证书与域名不匹配)，在项目里请求错误500(直接访问可以)
