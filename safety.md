@@ -292,14 +292,43 @@ originalText += decipher.final('utf8')
 
 
 
-### HTTPS 
+### Build HTTPS 
 
 > TLS (SSL) 加密
 
 ![](./images/safety_0.png)
 
+#### 申请证书
+
+* [手动申请证书 | sslforfree](https://www.sslforfree.com/)
+
+* 脚本申请(真实环境推荐)
+
+  > 下载脚本
+  >
+  > https://get.acme.sh/
+
+  ```
+  curl https://get.acem.sh | sh
+  ```
+
+  
+
+  > // 进入，执行 申请脚本 acme.sh  
+  > // ./acme.sh --issue -d 申请的域名 --webroot  证书存放路径
+
+  ```
+  ./acme.sh --issue -d news.toobug.net --webroot /data/web/news.toobug.new/
+  ```
+
+  >记录证书路径，并使用
+
+#### vue-cli 设置https
+
 > [vue-cli如何支持本地https](https://www.jianshu.com/p/dabe3c249f3e)
->
+
+#### 端口问题
+
 > 若遇到443 无法使用，可能是其他应用占用了，如虚拟机，哭。。
 >
 > [vmware-hostd.exe 占用443端口](https://blog.csdn.net/wulove52/article/details/61916090)
@@ -311,5 +340,29 @@ originalText += decipher.final('utf8')
 > [那些默认端口](https://www.cnblogs.com/aspirant/p/11727120.html)
 >
 > [各种常用的默认端口号 总结](https://www.cnblogs.com/sablier/p/10699382.html)
->
-> 前端https 不安全还可以访问，后端https不安全(证书与域名不匹配)，在项目里请求错误500(直接访问可以)
+
+#### https 安全问题
+
+* 网站使用 https时，其所有请求`都`要求是https，否则会有问题，如页面会显示为不安全。
+
+* devServer.proxy.secure
+
+> 前端https 不安全还可以访问，后端https不安全时，secure为true时将报错500 (直接访问可以)，所有如果不安全应设为secure: false
+
+```js
+// vue.config.js
+module.exports = {
+  devServer: {
+  	proxy: {
+  	 "/apis": {
+        target: `url`,
+        secure: true, //https ，为true，不安全时则报错500
+        changeOrigin: true,
+        pathRewrite: {
+          "^/apis": ""
+        }
+  	}
+  }
+}
+```
+

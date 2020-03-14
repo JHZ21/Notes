@@ -1,8 +1,18 @@
 # mongodb
 
+## 原子操作
 
+> [ MongoDB 原子操作](https://www.runoob.com/mongodb/mongodb-atomic-operations.html)
 
-## $unset
+### $inc
+
+>对文档的某个值为数字型（只能为满足要求的数字）的键进行增减的操作。
+
+```js
+{ $inc : { field : value } }
+```
+
+### $unset
 
 > 删除某个属性
 

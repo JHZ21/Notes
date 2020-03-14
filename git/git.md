@@ -166,7 +166,9 @@ git branch -D 分支名
 
 
 
-## cherry-pick：复制指定提交的改动
+## * cherry-pick：复制指定提交的改动
+
+> good！
 
 ```
 git cherry-pick <commit>
