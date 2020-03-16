@@ -8,10 +8,19 @@
 >
 > 工作区 <—（```git checkout --<file>```)—  暂存区 <—(```git reset HEAD <file>```)— 版本库
 
+| 提交     | 工作区     | =>                                | 暂存区     | =>                          | 版本区     |
+| -------- | ---------- | --------------------------------- | ---------- | --------------------------- | ---------- |
+|          |            | ```git add  <file>```             |            | ```git commit -m “ ”```     |            |
+|          |            |                                   |            |                             |            |
+| **回滚** | **工作区** | **<=**                            | **暂存区** | **<=**                      | **版本区** |
+|          |            | ```git checkout --<file>```       |            | ```git reset HEAD <file>``` |            |
+|          |            | ```git restore --staged <file>``` |            |                             |            |
+
 ```
 // 缓存所有文件
 git add .
 git add *
+git commit -a  // 缓存并提交
 ```
 
 
@@ -189,14 +198,6 @@ eg: git cherry-pick a3d5f13
 
 
 
-###  隐藏当前工作现场
-
-```
-git stash  // 工作区干净了
-```
-
-
-
 ### 查看隐藏列表
 
 ```git stash list
@@ -210,6 +211,37 @@ stash@{0}: WIP on master: 60e5067 merged bug fix 1
 stash@{1}: WIP on dev: 5de3141 dev 3
 stash@{2}: WIP on dev: 5de3141 dev 3
 ```
+
+
+
+###  隐藏当前工作现场
+
+```
+git stash  // 工作区干净了
+git stash push -m <message> // 隐藏并输入注释
+```
+
+
+
+### 恢复工作现场
+
+```
+git stash apply 恢复下标0的(最新的)stash 但不删除
+git stash pop // 恢复第一个(最新的)stash 并删除
+// git stash ( pop | apply ) [-- index] 
+git stash apply -- 0  //恢复下标为0的stash
+```
+
+
+
+### 删除stash
+
+```
+// git stash drop [-q|--quiet] [<stash>]
+git stash drop 0 // 删除下标0的stash
+```
+
+
 
 
 
