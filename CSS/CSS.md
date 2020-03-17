@@ -2,6 +2,21 @@
 
 
 
+## 颜色
+
+### rgba
+
+> 可以配合scss等，变量替换
+
+```
+rgba(red, green, blue, alpha)
+rgba(color, alpha) 
+```
+
+
+
+
+
 ## display 元素显示的类型
 
 * [CSS display 属性](https://www.w3school.com.cn/cssref/pr_class_display.asp)
@@ -102,9 +117,9 @@ width: 900px;
 
 
 
-## [CSS 选择器参考手册 | W3school](https://www.w3school.com.cn/cssref/css_selectors.asp)
+## CSS 选择器
 
-> 第几元素选择器，必先找父元素，在找其第几个子元素
+> [CSS 选择器参考手册 | W3school](https://www.w3school.com.cn/cssref/css_selectors.asp)
 
 
 
