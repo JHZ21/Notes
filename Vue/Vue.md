@@ -2,6 +2,12 @@
 
 
 
+## template
+
+* 内不能引用普通函数，只能用自身的Vue的methods, datas等
+
+
+
 ## .native 事件修饰符
 
 > 想在某个`组件`的根元素上监听一个原生事件。可以使用 `v-on` 的修饰符 .native 

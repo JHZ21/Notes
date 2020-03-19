@@ -6,7 +6,21 @@
 
 ### async/await 与 forEach 问题
 
+> 函数内部，将异步转为同步效果，等待
+>
+> 而自身变成了异步， 对外为async，对内await异步
+
 * [async/await 与 forEach 问题](https://segmentfault.com/q/1010000009190129)
+
+* async/awiat 可以对Promise 生效，等待其执行结束
+
+```
+async () => {
+	await new Promse().then().catch()
+	......
+}
+// 
+```
 
 
 
