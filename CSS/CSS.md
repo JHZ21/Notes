@@ -2,6 +2,144 @@
 
 
 
+## text-indent
+
+> text-indent 属性规定文本块中首行文本的缩进。
+>
+> [text-indent | w3school ](https://www.w3school.com.cn/cssref/pr_text_text-indent.asp)
+
+* 允许使用负值。如果使用负值，那么首行会被缩进到左边
+* em  大小根据从（父元素等）继承到的字号大小
+
+
+
+[理解CSS3 transform中的Matrix(矩阵)](zhangxinxu.com/wordpress/2012/06/css3-transform-matrix-矩阵/)
+
+
+
+## 动画
+
+### transition 过渡动画
+
+* 语法
+
+```
+transition: property duration timing-function delay;
+```
+
+| 值                                                           | 描述                                |
+| :----------------------------------------------------------- | :---------------------------------- |
+| [transition-property](https://www.w3school.com.cn/cssref/pr_transition-property.asp) | 规定设置过渡效果的 CSS 属性的名称。 |
+| [transition-duration](https://www.w3school.com.cn/cssref/pr_transition-duration.asp) | 规定完成过渡效果需要多少秒或毫秒。  |
+| [transition-timing-function](https://www.w3school.com.cn/cssref/pr_transition-timing-function.asp) | 规定速度效果的速度曲线。            |
+| [transition-delay](https://www.w3school.com.cn/cssref/pr_transition-delay.asp) | 定义过渡效果何时开始。              |
+
+### animation  动画
+
+## 语法
+
+```css
+animation: name duration timing-function delay iteration-count direction;
+```
+
+| 值                                                           | 描述                                     |
+| :----------------------------------------------------------- | :--------------------------------------- |
+| *[animation-name](https://www.w3school.com.cn/cssref/pr_animation-name.asp)* | 规定需要绑定到选择器的 keyframe 名称。。 |
+| *[animation-duration](https://www.w3school.com.cn/cssref/pr_animation-duration.asp)* | 规定完成动画所花费的时间，以秒或毫秒计。 |
+| *[animation-timing-function](https://www.w3school.com.cn/cssref/pr_animation-timing-function.asp)* | 规定动画的速度曲线。                     |
+| *[animation-delay](https://www.w3school.com.cn/cssref/pr_animation-delay.asp)* | 规定在动画开始之前的延迟。               |
+| *[animation-iteration-count](https://www.w3school.com.cn/cssref/pr_animation-iteration-count.asp)* | 规定动画应该播放的次数。                 |
+| *[animation-direction](https://www.w3school.com.cn/cssref/pr_animation-direction.asp)* | 规定是否应该轮流反向播放动画。           |
+
+* 例子
+
+```
+div
+{
+animation:mymove 5s infinite;
+-webkit-animation:mymove 5s infinite; /* Safari 和 Chrome */
+}
+
+@keyframes mymove
+{
+from {left:0px;}
+to {left:200px;}
+}
+```
+
+
+
+## 层叠规则
+
+### z-index
+
+可以设置z-index属性的元素
+
+* 定位元素 position 不为 static 
+* flex  元素
+
+### 层叠顺序规则
+
+* 内容
+  * 正 z-index
+  
+  * z-index: auto， 
+  
+    或 z-index：0， 
+  
+    不依赖z-index的层叠上下文
+  
+  * inline 水平盒子
+* 布局
+  * float 浮动盒子
+  * block 块状水平盒子
+* 装饰
+  * 负 z-index
+  * 层叠上下文 background / border
+
+### 层叠准则
+
+* 谁大谁上 （如：z-index)
+* 后来居上   · (DOM 流处于后面会覆盖前面的元素)
+
+### 创建层叠上下文
+
+* z-index : 非默认值aut;  如：z-index: 0;
+* CSS3: transform , 如：tranform: scale(1);
+
+###  补充
+
+* 元素成为地位元素，其z-index就会自动生效，值为默认的auto
+* 不支持z-index属性的元素,  天然是z-index: auto
+
+
+
+## transition 过渡
+
+* display 
+
+> 冲突：当改变元素display属性时，过渡属性transition失效。
+>
+> 原因：display:none的时候，页面文档流中将不会存在该元素。transition无法对一个从有到无的元素产生过渡效果。
+>
+> 解决方法：
+>
+> ​    1.改变元素的宽/高为0px,达到隐藏的目的。
+>
+> ​    2.使用visibility替代display。
+
+
+
+## padding, margin 百分比
+
+> 论垂直还是水平，百分比值始终参考宽度
+>
+> [CSS 百分比 margin & padding](https://swordair.com/css-persentage-margin-and-padding/?utm_source=tuicool&utm_medium=referral)
+>
+> 
+
+
+
 ## 颜色
 
 ### rgba
@@ -120,6 +258,31 @@ width: 900px;
 ## CSS 选择器
 
 > [CSS 选择器参考手册 | W3school](https://www.w3school.com.cn/cssref/css_selectors.asp)
+
+
+
+| 选择器                                                       | 例子                  | 例子描述                                      |
+| ------------------------------------------------------------ | --------------------- | --------------------------------------------- |
+| [:first-of-type](https://www.w3school.com.cn/cssref/selector_first-of-type.asp) | p:first-of-type       | 选择其父元素的第一个 p 子元素。               |
+| [:last-of-type](https://www.w3school.com.cn/cssref/selector_last-of-type.asp) | p:last-of-type        | 选择其父元素的最后一个 p 子元素。             |
+| [:only-of-type](https://www.w3school.com.cn/cssref/selector_only-of-type.asp) | p:only-of-type        | 选择其父元素的p子元素仅一个的p元素            |
+| [:only-child](https://www.w3school.com.cn/cssref/selector_only-child.asp) | p:only-child          | 选择其父元素仅有一个子元素的 p 元素。         |
+| [:nth-child(*n*)](https://www.w3school.com.cn/cssref/selector_nth-child.asp) | p:nth-child(2)        | 选择其父元素的第二个子元素。                  |
+| [:nth-last-child(*n*)](https://www.w3school.com.cn/cssref/selector_nth-last-child.asp) | p:nth-last-child(2)   | 同上，从最后一个子元素开始计数。              |
+| [:nth-of-type(*n*)](https://www.w3school.com.cn/cssref/selector_nth-of-type.asp) | p:nth-of-type(2)      | 选择属于其父元素第二个 p 元素的每个 p 元素。  |
+| [:nth-last-of-type(*n*)](https://www.w3school.com.cn/cssref/selector_nth-last-of-type.asp) | p:nth-last-of-type(2) | 同上，但是从最后一个子元素开始计数。          |
+| [:last-child](https://www.w3school.com.cn/cssref/selector_last-child.asp) | p:last-child          | 选择属于其父元素最后一个子元素每个 <p> 元素。 |
+
+> 总结
+>
+> * type ：有类型要求
+> * child：只需为子元素
+> * only :  仅仅，个数要唯一
+> * last  :  倒数
+
+
+
+
 
 
 

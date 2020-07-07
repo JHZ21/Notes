@@ -24,9 +24,27 @@
 
   ![][p1]
 
+
+
 [使用Promise,  在旧式回调 API 中创建 Promise ](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Using_promises)
 
 [JavaScript Promise](https://www.cnblogs.com/rubylouvre/p/3495286.html)
+
+```js
+new Promise((resolve, reject)=>{
+    resolve()
+    reject()}).then(()=> console.log('resolve')).catch(()=>console.log('reject'))
+> resolve
+// reject()会执行但，状态不会改变
+```
+
+```js
+new Promise((resolve, reject)=>{
+    resolve()
+    console.log('1')}).then(()=> console.log('resolve')).catch(()=>console.log('reject'))
+> 1
+> resolve
+```
 
 
 

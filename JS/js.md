@@ -1,44 +1,399 @@
 # Js 对象
 
+## 链接
+
 * [JavaScript 和 HTML DOM 参考手册 | RUNOOB](https://www.runoob.com/jsref/jsref-tutorial.html)
 * [JavaScript 参考手册 | W3school](https://www.w3school.com.cn/jsref/index.asp)
 
 
 
-## Array
+# 按位操作符
+
+* [按位操作符 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators)
+
+  * & (按位与)
+
+  * | (按位或)
+
+  * ^ (按位异或)
+
+  * ~ (按位非)
+
+* 按位移动操作符
+
+  * << (左移)
+
+  * \>> (有符号右移)
+
+  * \>>> (无符号右移)
+
+    
+
+
+
+## 运算符优先级
+
+> [运算符优先级 ](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_Precedence)
+
+
+
+## 数据类型
+
+* 值类型与引用类型
+
+- 7 种原始类型
+  
+  - Boolean
+  
+  - Null
+  
+  - Undefined
+  
+  - Number
+  
+  - BigInt
+  
+  - String
+  
+  - Symbol
+  
+    > [Symbol | MDN](https://www.baidu.com/link?url=-zp7kGvfZKfGDZSrV4YUCmg2Ir_-WaR8NXK62ZAUhu8AVwBD6DNKWjeR_ODS4siQdlM9K8kOZWQdLptzIBILFd1C04Hmk_minwxuobcBL9Pdy-skIrew_AScukimYQCYawcIK1SSZSWRQ7vHxpFOC_&wd=&eqid=8db7d91600018109000000055e9f2459)
+    >
+    >```js
+    >Symbol("foo") === Symbol("foo"); // false
+    >```
+- Object
+
+## instance.constructor
+
+> 利用实例的构造函数属性，创造新实例
+>
+> 下面例子清晰展示了，实例原型的constructor 指向 构造函数
+
+```js
+let date = new Date()
+> Thu Mar 26 2020 22:00:17 GMT+0800 (中国标准时间)
+
+let date0 = new date.constructor()
+> Thu Mar 26 2020 22:01:28 GMT+0800 (中国标准时间)
+```
+
+## typeof
+
+> 返回字符串，表示未经计算的操作数的类型
+>
+> [typeof](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof)
+
+| 类型                                                         | 结果                                                         |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| [Undefined](https://developer.mozilla.org/zh-CN/docs/Glossary/undefined) | `"undefined"`                                                |
+| [Null](https://developer.mozilla.org/zh-CN/docs/Glossary/Null) | `"object"` (见[下文](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof#null)) |
+| [Boolean](https://developer.mozilla.org/zh-CN/docs/Glossary/Boolean) | `"boolean"`                                                  |
+| [Number](https://developer.mozilla.org/zh-CN/docs/Glossary/Number) | `"number"`                                                   |
+| [BigInt](https://developer.mozilla.org/zh-CN/docs/Glossary/BigInt) | `"bigint"`                                                   |
+| [String](https://developer.mozilla.org/zh-CN/docs/Glossary/字符串) | `"string"`                                                   |
+| [Symbol](https://developer.mozilla.org/zh-CN/docs/Glossary/Symbol) (ECMAScript 2015 新增) | `"symbol"`                                                   |
+| 宿主对象（由 JS 环境提供）                                   | *取决于具体实现*                                             |
+| [Function](https://developer.mozilla.org/zh-CN/docs/Glossary/Function) 对象 (按照 ECMA-262 规范实现 [[Call]]) | `"function"`                                                 |
+| 其他任何对象                                                 | `"object"`                                                   |
+
+> es2015之前  typeof 能返回 `'undefined', 不会抛出错误.
+>
+> 但加入了块级作用域的 [let](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/let) 和 [const](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/const) 之后,  对其未被声明的变量使用 typeof ,就会抛出一个 [ReferenceError](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError)， class 声明也一样，也会有 “[暂存死区](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/let#Temporal_Dead_Zone_and_errors_with_let)” 。
+
+#### typeof 例外
+
+当前所有的浏览器都暴露了一个类型为 `undefined` 的非标准宿主对象 [`document.all`](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/all)。
+
+```
+typeof document.all
+> "undefined"
+// 然而
+document.all
+> HTMLAllCollection(1894) [html, head, meta, meta, script, title, meta, meta, link, link, link, link, link, link, link, link, script, style, script, script, script, script, script, script, meta, meta, meta, meta, meta, meta, meta, link, link, link, link, link, link, link, link, link, link, link, link, link, link, link, link, link, link, link, link, link, link, link, link, link, link, meta, meta, meta, meta, meta, meta, meta, link, script, body, script, div#react-container, div.loading-bar, ul#nav-access, li, a#skip-main, li, a#skip-language, li, a#skip-search, header.page-header, a.logo, svg, path, nav.main-nav, ul, li.top-level-entry-container, button.top-level-entry, span.main-menu-arrow, ul, li, a, li, a, li, a, li, a, li, a, li, a, li, …]
+```
+
+>尽管规范允许为非标准的外来对象自定义类型标签，但它要求这些类型标签与已有的不同。`document.all` 的类型标签为 `'undefined'` 的例子在 Web 领域中被归类为对原 ECMA JavaScript 标准的“故意侵犯”。
+
+
+
+## Object
+
+> [Object | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object)
+
+
+
+### Object 方法 另建
+
+> 已另建文档
+
+
+
+### Proxy
+
+* [Proxy | mdn](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
+* 语法
+
+```js
+const p = new Proxy(target, handler)
+```
+
+
+
+### Set
+
+> **`Set`** 对象允许你存储任何类型的唯一值，无论是[原始值](https://developer.mozilla.org/zh-CN/docs/Glossary/Primitive)或者是对象引用。
+>
+> [Set](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set)
+
+
+
+### Map
+
+> **`Map`** 对象保存键值对，并且能够记住键的原始插入顺序。
+>
+> 任何值(对象或者[原始值](https://developer.mozilla.org/zh-CN/docs/Glossary/Primitive)) 都可以作为一个键或一个值。
+>
+> [Map](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map)
+
+* 储存在Map `键名`，`键值`的数据，会形成对数据对象的引用，一旦不再需要这两个对象，我们就必须手动删除这个引用，否则垃圾回收机制就不会释放对象占用的内存。
+
+### WeakMap
+
+* `键名`是弱引用，所有键必须是对象，而值可以是任意的,  所有`键值`，依然是正常引用
+
+* WeakMap的`键名`所引用的对象因为弱引用，即垃圾回收机制不将该引用考虑在内,
+
+  因此，只要所引用的对象的其他引用都被清除，垃圾回收机制就会释放该对象所占用的内存。
+
+* 如果你要往对象上添加数据，又不想干扰垃圾回收机制，就可以使用 WeakMap
+
+  > 一个典型应用场景是，在网页的 DOM 元素上添加数据，就可以使用WeakMap结构。当该 DOM 元素被清除，其所对应的WeakMap记录就会自动被移除。
+
+  ```js
+  const wm = new WeakMap();
+  const element = document.getElementsByTagName("div")[0];
+  wm.set(element,"some information");
+  console.log(wm.get(element));
+  ```
+
+  
+
+
+
+### Array
+
+#### 好文
+
+> [【深度长文】JavaScript数组所有API全解密](https://link.zhihu.com/?target=http%3A//louiszhai.github.io/2017/04/28/array/)
+
+#### 赋值(奇特值)
+
+> ```js
+> arr = [,,]
+> > [empty × 2]
+> arr[0]
+> > undefind
+> arr.length
+> > 2
+> arr = [undefined,]
+> > [undefined]
+> arr[0]
+> > undefined
+> arr = [,undefined]
+> > [empty, undefined]
+> arr.length 
+> > 2
+> ```
+>
+> 总结 ：
+>
+> * 数组末尾无值，则舍弃
+>* 非末尾位无值，显示empty,  get 值为undefined
+> * 输入 undefined, null 也算有输入值
+> * empty. undefined, null 值，也算入数组长度计算
+
+#### 循环对 empty, undefined, null 等值的态度
+
+```js
+// arr 赋值
+let arr = [0, false, NaN ,null, , undefined]
+[ 0, false, NaN, null, empty, undefined ]
+
+// for in 测试
+for(let i in arr){console.log(i, arr[i])}
+0 0
+1 false     
+2 NaN       
+3 null      
+5 undefined 
+// forEach 测试
+arr.forEach((v, i) => console.log(i, v))
+0 0
+1 false     
+2 NaN       
+3 null      
+5 undefined 
+// filter 测试
+arr.filter((v,i) => {
+	console.log(i, v)
+	return v
+})
+0 0
+1 false     
+2 NaN       
+3 null      
+5 undefined 
+[]
+// for () 测试s
+for(let i=0;i<arr.length ; i++){console.log(i, arr[i])}
+0 0
+1 false     
+2 NaN       
+3 null      
+4 undefined 
+5 undefined 
+```
+
+总结：
+
+* for in ，forEach ，filter 都遍历null, undefined , false等值  但对empty ，则会跳过
+* filter 可用于清除数组里 这些值
+* for () 会按照我们的设置,  遍历完所有值
+
+
+
+
+
+
 
 * [concat()](https://www.runoob.com/jsref/jsref-concat-array.html)
+
+  > ```js
+  > arrayObject.concat(arrayX,arrayX,......,arrayX)
+  > ```
+  >
+  > ```js
+  > var a = [1,2,3]
+  > a.concat(4,5)
+  > // 1,2,3,4,5
+  > ```
+  >
+  > ```js
+  > var arr = new Array(3)
+  > arr[0] = "George"
+  > arr[1] = "John"
+  > arr[2] = "Thomas"
+  > 
+  > var arr2 = new Array(3)
+  > arr2[0] = "James"
+  > arr2[1] = "Adrew"
+  > arr2[2] = "Martin"
+  > 
+  > arr.concat(arr2)
+  > //George,John,Thomas,James,Adrew,Martin
+  > ```
+
+#### Array方法
+
+* [concat()](https://www.baidu.com/link?url=55ymuQUeT1zvurVAa9b6wkD-SqyqkZlFBbNNJ8E10UtdM6uRhqtrmpejhahtv8wwQP7QOBNIM3UWnr-ryfsZZFIEFfrDci04DnhMaHLeIsq&wd=&eqid=8ec1c2630002091f000000055e8eb1e9)
+
+  > ```js
+  > arrayObject.concat(arrayX,arrayX,......,arrayX)
+  > // arrayX 可以是具体的值，也可以是数组
+  > // 返回值：一个新数组，包含arrayObject，arrayX的所有元素
+  > // arrayObject,不被修改
+  > ```
+  >
+  > ```js
+  > let arr=[1]
+  > 
+  > arr.concat(1,[2,3])
+  > //[1,1,2,3]
+  > arr
+  > //[1]
+  > ```
 
 * [copyWithin()](https://www.runoob.com/jsref/jsref-copywithin.html)
 
 * [entries()](https://www.runoob.com/jsref/jsref-entries.html)
 
+* [every() | MDN](https://www.baidu.com/link?url=aIUXOe-2MUwRZERieVWN3PSjYlCuejM8Us3qpiMKD_t1S32SD2vYPQrGWw7JvURIkPGaeicu20kLou-ODh99esRYijxKsUxbOCQHWfDy6wIi1jQ1rjI3tWoaBdWDiEn5QSf9wR9SW23RQ0SG_gU9z_&wd=&eqid=90f8f7f700004d69000000055ea5a3a6)
+
 * [fill()](https://www.runoob.com/jsref/jsref-fill.html)
 
 * [filter()](https://www.runoob.com/jsref/jsref-filter.html)
+
 * [find()](https://www.runoob.com/jsref/jsref-find.html)
+
+* [flat() | MDN](https://www.baidu.com/link?url=saBnGesuk0inSI52EKDOyFZki2AIAr6JPuQrZbfQwTopuH4u9PBgUPUhwNb3WoLpoPSwvxFiAuYb5BZmQ1You1m-4oehJYHQzvcMdbz0Nh8XVCGBjiIuTVYqZoCcpd63_3G8GhCex5XEwHKJINKu6_&wd=&eqid=e4ca32cd00076d9f000000055e91d2ed)
+
 * [findIndex()](https://www.runoob.com/jsref/jsref-findindex.html)
+
 * [forEach()](https://www.runoob.com/jsref/jsref-foreach.html)
+
 * [from()](https://www.runoob.com/jsref/jsref-from.html)
+
 * [includes()](https://www.runoob.com/jsref/jsref-includes.html)
+
 * [indexOf()](https://www.runoob.com/jsref/jsref-indexof-array.html)
+
 * [isArray()](https://www.runoob.com/jsref/jsref-isarray.html)
+
 * [join()](https://www.runoob.com/jsref/jsref-join.html)
+
 * [keys()](https://www.runoob.com/jsref/jsref-keys.html)
+
 * [lastIndexOf()](https://www.runoob.com/jsref/jsref-lastindexof-array.html)
+
 * [map()](https://www.runoob.com/jsref/jsref-map.html)
+
 * [pop()](https://www.runoob.com/jsref/jsref-pop.html)
+
 * [push()](https://www.runoob.com/jsref/jsref-push.html)
+
 * [reduce()](https://www.runoob.com/jsref/jsref-reduce.html)
+
 * [reduceRight()](https://www.runoob.com/jsref/jsref-reduceright.html)
+
 * [reverse()](https://www.runoob.com/jsref/jsref-reverse.html)
+
 * [shift()](https://www.runoob.com/jsref/jsref-shift.html)
+
+  > ```js
+  > array.shift()
+  > //返回值： 数组原来的第一个元素的值（移除的元素）
+  > ```
+
+* [unshift | w3school](https://www.baidu.com/link?url=AV1osNNZbQ0Zw1cX9uCn6Evnv97vTUzbENdzqngde_IUfpdGe7Hp460ZWWYeLKESM-791t0K1T83G7R3T-5X7a&wd=&eqid=a9bd95c400001cb4000000055e8df593)
+
+  > ```js
+  > arrayObject.unshift(newelement1,newelement2,....,newelementX)
+  > //返回值： arrayObject 的新长度。
+  > ```
+
 * [slice()](https://www.runoob.com/jsref/jsref-slice-array.html)
+
+  > `array.slice(?start, ?end)`
+  >
+  > 不修改原数组，浅复制出新数组
+
 * [some()](https://www.runoob.com/jsref/jsref-some.html)
+
 * [sort()](https://www.runoob.com/jsref/jsref-sort.html)
+
 * [splice()](https://www.runoob.com/jsref/jsref-splice.html)
+
+  ```js
+  array.splice(index,howmany,item1,.....,itemX)
+  ```
+
+  
+
 * [toString()](https://www.runoob.com/jsref/jsref-tostring-array.html)
+
 * [unshift()](https://www.runoob.com/jsref/jsref-unshift.html)
+
 * [valueOf()](https://www.runoob.com/jsref/jsref-valueof-array.html)
 
 
@@ -52,6 +407,12 @@
 
 
 ## Date()
+
+> [Date](https://www.w3school.com.cn/jsref/jsref_obj_date.asp)
+
+* Date.now()
+
+> 返回当前时间戳 ( number)
 
 
 
@@ -67,7 +428,13 @@
 
 * [abs(x)](https://www.w3school.com.cn/jsref/jsref_abs.asp)
 
+* [max() | MDN](https://www.baidu.com/link?url=sZKKlyKPnexT36IhZjI0n0EFYV2As_Y0If2sd9SMA6mczAcX7uXGZElzeZVgQlvE5HMfm70AIcmRyPuv70f5LfzCSUswIphQCzhej_ZdN2vj3TT7VtM0u4cPh5LL87oK_TMrmYNp6LjXLXM4C1nuDK&wd=&eqid=cfa9c7d3000118c0000000055ea6f9b2)
 
+  > ```js
+  > Math.max(value1[,value2, ...]) 
+  > ```
+  >
+  > 
 
 
 
@@ -169,29 +536,80 @@ Number.isInteger(NaN)
 
 ## String
 
->  [JS String](https://www.w3school.com.cn/jsref/jsref_obj_string.asp)
+#### 好文
+
+* [JS String](https://www.w3school.com.cn/jsref/jsref_obj_string.asp)
+* [JavaScript字符串所有API全解密](https://link.zhihu.com/?target=http%3A//louiszhai.github.io/2016/01/12/js.String/)
+
+### 不可见字符
+
+* \u200b
+
+#### String方法
 
 * [anchor()](https://www.w3school.com.cn/jsref/jsref_anchor.asp)
+
 * [charAt()](https://www.w3school.com.cn/jsref/jsref_charAt.asp)
+
 * [charCodeAt()](https://www.w3school.com.cn/jsref/jsref_charCodeAt.asp)
+
 * [concat()](https://www.w3school.com.cn/jsref/jsref_concat_string.asp)
+
 * [fromCharCode()](https://www.w3school.com.cn/jsref/jsref_fromCharCode.asp)
+
 * [indexOf()](https://www.w3school.com.cn/jsref/jsref_indexOf.asp)
+
+  > ```js
+  > stringObject.indexOf(searchvalue,fromindex)
+  > ```
+
 * [lastIndexOf()](https://www.w3school.com.cn/jsref/jsref_lastIndexOf.asp)
+
 * [match()](https://www.w3school.com.cn/jsref/jsref_match.asp)
+
+  > [match() | mdn](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/match)
+
 * [replace()](https://www.w3school.com.cn/jsref/jsref_replace.asp)
+
 * [search()](https://www.w3school.com.cn/jsref/jsref_search.asp)
+
 * [slice()](https://www.w3school.com.cn/jsref/jsref_slice_string.asp)
+
+  > string 没有splice()
+
 * [small()](https://www.w3school.com.cn/jsref/jsref_small.asp)
+
 * [split()](https://www.w3school.com.cn/jsref/jsref_split.asp)
+
 * [substr()](https://www.w3school.com.cn/jsref/jsref_substr.asp)
+
 * [substring()](https://www.w3school.com.cn/jsref/jsref_substring.asp)
+
+  > ```js
+  > stringObject.substring(start,stop)
+  > ```
+
+* [trim()  | 菜鸟教程](https://www.baidu.com/link?url=16cr_Kynk7pK4RtwcdOCYyLhVS_j2fodIky8MRPA1HGcXV7bsySJ5zfiaRy4cXGhK3EEfPn0QkRcqSsBA2E-2_&wd=&eqid=84478eb3000009cc000000055e9f1940)
+
+  > 用于删除字符串的头尾空格。
+  >
+  > 不会改变原始字符串。
+
 * [toLocaleLowerCase()](https://www.w3school.com.cn/jsref/jsref_toLocaleLowerCase.asp)
+
 * [toLocaleUpperCase()](https://www.w3school.com.cn/jsref/jsref_toLocaleUpperCase.asp)
+
 * [toLowerCase()](https://www.w3school.com.cn/jsref/jsref_toLowerCase.asp)
+
 * [toUpperCase()](https://www.w3school.com.cn/jsref/jsref_toUpperCase.asp)
+
 * [toString()](https://www.w3school.com.cn/jsref/jsref_toString_string.asp)
+
 * [valueOf()](https://www.w3school.com.cn/jsref/jsref_valueOf_string.asp)
+
+* 
+
+
 
 
 
@@ -221,7 +639,7 @@ Number.isInteger(NaN)
 
 
 
-# Browser 对象
+# BOM 对象
 
 
 
@@ -230,8 +648,83 @@ Number.isInteger(NaN)
 >Window 对象表示浏览器中打开的窗口。
 >
 >[Window](https://www.w3school.com.cn/jsref/dom_obj_window.asp)
+
+* Window 对象集合
+
+| 集合     | 描述                                                         |
+| :------- | :----------------------------------------------------------- |
+| frames[] | 返回窗口中所有命名的框架。该集合是 Window 对象的数组，每个 Window 对象在窗口中含有一个框架或 <iframe>。属性 frames.length 存放数组 frames[] 中含有的元素个数。注意，frames[] 数组中引用的框架可能还包括框架，它们自己也具有 frames[] 数组。 |
+
+* Window 对象属性
+
+| 属性                                                         | 描述                                                         |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| [closed](https://www.w3school.com.cn/jsref/prop_win_closed.asp) | 返回窗口是否已被关闭。                                       |
+| [defaultStatus](https://www.w3school.com.cn/jsref/prop_win_defaultstatus.asp) | 设置或返回窗口状态栏中的默认文本。                           |
+| [document](https://www.w3school.com.cn/jsref/dom_obj_document.asp) | 对 Document 对象的只读引用。请参阅 [Document 对象](https://www.w3school.com.cn/jsref/dom_obj_document.asp)。 |
+| [history](https://www.w3school.com.cn/jsref/dom_obj_history.asp) | 对 History 对象的只读引用。请参数 [History 对象](https://www.w3school.com.cn/jsref/dom_obj_history.asp)。 |
+| [innerheight](https://www.w3school.com.cn/jsref/prop_win_innerheight_innerwidth.asp) | 返回窗口的文档显示区的高度。                                 |
+| [innerwidth](https://www.w3school.com.cn/jsref/prop_win_innerheight_innerwidth.asp) | 返回窗口的文档显示区的宽度。                                 |
+| length                                                       | 设置或返回窗口中的框架数量。                                 |
+| [location](https://www.w3school.com.cn/jsref/dom_obj_location.asp) | 用于窗口或框架的 Location 对象。请参阅 [Location 对象](https://www.w3school.com.cn/jsref/dom_obj_location.asp)。 |
+| [name](https://www.w3school.com.cn/jsref/prop_win_name.asp)  | 设置或返回窗口的名称。                                       |
+| [Navigator](https://www.w3school.com.cn/jsref/dom_obj_navigator.asp) | 对 Navigator 对象的只读引用。请参数 [Navigator 对象](https://www.w3school.com.cn/jsref/dom_obj_navigator.asp)。 |
+| [opener](https://www.w3school.com.cn/jsref/prop_win_opener.asp) | 返回对创建此窗口的窗口的引用。                               |
+| [outerheight](https://www.w3school.com.cn/jsref/prop_win_outerheight.asp) | 返回窗口的外部高度。                                         |
+| [outerwidth](https://www.w3school.com.cn/jsref/prop_win_outerwidth.asp) | 返回窗口的外部宽度。                                         |
+| pageXOffset                                                  | 设置或返回当前页面相对于窗口显示区左上角的 X 位置。          |
+| pageYOffset                                                  | 设置或返回当前页面相对于窗口显示区左上角的 Y 位置。          |
+| parent                                                       | 返回父窗口。                                                 |
+| [Screen](https://www.w3school.com.cn/jsref/dom_obj_screen.asp) | 对 Screen 对象的只读引用。请参数 [Screen 对象](https://www.w3school.com.cn/jsref/dom_obj_screen.asp)。 |
+| [self](https://www.w3school.com.cn/jsref/prop_win_self.asp)  | 返回对当前窗口的引用。等价于 Window 属性。                   |
+| [status](https://www.w3school.com.cn/jsref/prop_win_status.asp) | 设置窗口状态栏的文本。                                       |
+| [top](https://www.w3school.com.cn/jsref/prop_win_top.asp)    | 返回最顶层的先辈窗口。                                       |
+| window                                                       | window 属性等价于 self 属性，它包含了对窗口自身的引用。      |
+| screenLeftscreenTopscreenXscreenY                            | 只读整数。声明了窗口的左上角在屏幕上的的 x 坐标和 y 坐标。IE、Safari 和 Opera 支持 screenLeft |
+
+* Window 对象方法
+
+| 方法                                                         | 描述                                               |
+| :----------------------------------------------------------- | :------------------------------------------------- |
+| [alert()](https://www.w3school.com.cn/jsref/met_win_alert.asp) | 显示带有一段消息和一个确认按钮的警告框。           |
+| [blur()](https://www.w3school.com.cn/jsref/met_win_blur.asp) | 把键盘焦点从顶层窗口移开。                         |
+| [clearInterval()](https://www.w3school.com.cn/jsref/met_win_clearinterval.asp) | 取消由 setInterval() 设置的 timeout。              |
+| [clearTimeout()](https://www.w3school.com.cn/jsref/met_win_cleartimeout.asp) | 取消由 setTimeout() 方法设置的 timeout。           |
+| [close()](https://www.w3school.com.cn/jsref/met_win_close.asp) | 关闭浏览器窗口。                                   |
+| [confirm()](https://www.w3school.com.cn/jsref/met_win_confirm.asp) | 显示带有一段消息以及确认按钮和取消按钮的对话框。   |
+| [createPopup()](https://www.w3school.com.cn/jsref/met_win_createpopup.asp) | 创建一个 pop-up 窗口。                             |
+| [focus()](https://www.w3school.com.cn/jsref/met_win_focus.asp) | 把键盘焦点给予一个窗口。                           |
+| [moveBy()](https://www.w3school.com.cn/jsref/met_win_moveby.asp) | 可相对窗口的当前坐标把它移动指定的像素。           |
+| [moveTo()](https://www.w3school.com.cn/jsref/met_win_moveto.asp) | 把窗口的左上角移动到一个指定的坐标。               |
+| [open()](https://www.w3school.com.cn/jsref/met_win_open.asp) | 打开一个新的浏览器窗口或查找一个已命名的窗口。     |
+| [print()](https://www.w3school.com.cn/jsref/met_win_print.asp) | 打印当前窗口的内容。                               |
+| [prompt()](https://www.w3school.com.cn/jsref/met_win_prompt.asp) | 显示可提示用户输入的对话框。                       |
+| [resizeBy()](https://www.w3school.com.cn/jsref/met_win_resizeby.asp) | 按照指定的像素调整窗口的大小。                     |
+| [resizeTo()](https://www.w3school.com.cn/jsref/met_win_resizeto.asp) | 把窗口的大小调整到指定的宽度和高度。               |
+| [scrollBy()](https://www.w3school.com.cn/jsref/met_win_scrollby.asp) | 按照指定的像素值来滚动内容。                       |
+| [scrollTo()](https://www.w3school.com.cn/jsref/met_win_scrollto.asp) | 把内容滚动到指定的坐标。                           |
+| [setInterval()](https://www.w3school.com.cn/jsref/met_win_setinterval.asp) | 按照指定的周期（以毫秒计）来调用函数或计算表达式。 |
+| [setTimeout()](https://www.w3school.com.cn/jsref/met_win_settimeout.asp) | 在指定的毫秒数后调用函数或计算表达式。             |
+
+
+
+* [window.resizeTo() | 菜鸟教程](https://www.baidu.com/link?url=sRj61R886D0OJJYagZSKWcegxkKsmKPuZ7xR1mfxqvlU_D006m1QeVcjSTxELGvPPvOJyda4bcPJMO66TmZ_ja&wd=&eqid=eeda6e720000f427000000055e9d48ab)
+
+  * *window*.resizeTo(*width,height*)
+
+  * 不能设置那些不是通过 window.open 创建的窗口或 Tab 的大小。
+
+    当一个窗口里面含有一个以上的 Tab 时，无法设置窗口的大小。
+
+    
+
+### requestAnimationFrame
+
+> [window.requestAnimationFrame](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestAnimationFrame)
 >
->
+> 在浏览器在下次重绘之前调用指定的回调函数
+
+
 
 ### 原生弹框
 
@@ -262,13 +755,29 @@ Number.isInteger(NaN)
 
 ## Navigator 
 
+> 表示用户代理的状态和标识。 它允许脚本查询它和注册自己进行一些活动。
+
+* [navigator | mdn](https://developer.mozilla.org/zh-CN/docs/Web/API/Navigator)
+
 
 
 ## Screen
 
+> 表示一个屏幕窗口，往往指的是当前正在被渲染的window对象，可以使用 `window.screen` 获取它。
+
+* [screnn | mdn](https://developer.mozilla.org/zh-CN/docs/Web/API/Screen)
+
 
 
 ## History
+
+* [history |mdn](https://developer.mozilla.org/zh-CN/docs/Web/API/History)
+
+  * [`History.length`](https://developer.mozilla.org/zh-CN/docs/Web/API/History/length)
+  * [`History.state`](https://developer.mozilla.org/zh-CN/docs/Web/API/History/state)
+  * [`History.scrollRestoration`](https://developer.mozilla.org/zh-CN/docs/Web/API/History/scrollRestoration)
+
+  
 
 * ```js
   window.history.forward()
@@ -283,11 +792,27 @@ Number.isInteger(NaN)
   window.history.go(1) // = forward()
   ```
 
-* [History | mdn](https://developer.mozilla.org/zh-CN/docs/Web/API/History)
+### hash 模式
+
+* ```js
+  location.state // 获得hash
+  ```
+
+* ```js
+  history.pushState(状态对象, 标题 (目前被忽略),一个URL(可选的))
+  ```
+
+* ```js
+  history.replaceState(状态对象, 标题 (目前被忽略),一个URL(可选的))
+  ```
+
+* 
 
 
 
 ## Location
+
+* [*Location*  | *MDN*](https://developer.mozilla.org/zh-CN/docs/Web/API/Location)
 
 | 属性                                                         | 描述                                          |
 | :----------------------------------------------------------- | :-------------------------------------------- |
@@ -310,9 +835,7 @@ Number.isInteger(NaN)
 
 
 
-
-
-# HTML DOM 对象
+# DOM 对象
 
 
 
@@ -324,7 +847,7 @@ Number.isInteger(NaN)
 >
 >**提示：**Document 对象是 Window 对象的一部分，可通过 window.document 属性对其进行访问。
 >
->[DOM Document](https://www.w3school.com.cn/jsref/dom_obj_document.asp)
+>[DOM Document | W3school](https://www.w3school.com.cn/jsref/dom_obj_document.asp)
 
 
 
@@ -339,6 +862,61 @@ Number.isInteger(NaN)
 >[DOM Element](https://www.w3school.com.cn/jsref/dom_obj_all.asp)
 >
 >元素也可以拥有属性。属性是属性节点（参见下一节）。
+
+
+
+### insertBefore
+
+> [HTML DOM insertBefore | 菜鸟教程](https://www.baidu.com/link?url=eD4WRl0pALO_35KnqANfUKg9Kf1HeG0qJ5yQPv21Q8dE3OjDj33SC_n9Gd4_KMCjnK1i3SMGPFyQDOAlPyAFooqNYNxONkapZO_lycyN64u&wd=&eqid=fc9be1140004ba56000000055e9dbb5b)
+>
+> ```
+> node.insertBefore(newnode,existingnode)
+> ```
+
+
+
+### nextSibling
+
+> [HTML DOM nextSibling 属性 | 菜鸟教程](https://www.baidu.com/link?url=CKjs8uGOu7pos9kj05iXvLdhKNgOt9mdOdamPeo8J0GdBWaeosn2ftaRm2KHcliPlLZ_YECVwAR5swgrjorECB6H2na2pLP4AXDpR3q1mB3&wd=&eqid=bf18789b0004253c000000055e9dbd1f)
+>
+> ```js
+> node.nextSibling
+> ```
+>
+> nextSibling 属性可返回某个元素之后紧跟的节点（处于同一树层级中）。
+>
+> 返回节点以节点对象返回。
+>
+> **注意：** 如果元素紧跟后面没有节点则返回 *null*.
+
+
+
+### nodeType
+
+> 只读,  表示的是该节点的类型。
+>
+> [Node.nodeType](https://developer.mozilla.org/zh-CN/docs/Web/API/Node/nodeType)
+
+| 常量                 | 值   | 描述                                                         |
+| :------------------- | :--- | :----------------------------------------------------------- |
+| `Node.ELEMENT_NODE`  | `1`  | 一个 [`元素`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element) 节点，例如 [``](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/p) 和 [``](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/div)。 |
+| `Node.TEXT_NODE`     | `3`  | [`Element`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element) 或者 [`Attr`](https://developer.mozilla.org/zh-CN/docs/Web/API/Attr) 中实际的 [`文字`](https://developer.mozilla.org/zh-CN/docs/Web/API/Text) |
+| `Node.COMMENT_NODE`  | `8`  | 一个 [`Comment`](https://developer.mozilla.org/zh-CN/docs/Web/API/Comment) 节点。 |
+| `Node.DOCUMENT_NODE` | `9`  | 一个 [`Document`](https://developer.mozilla.org/zh-CN/docs/Web/API/Document) 节点。 |
+| ... ...              |      |                                                              |
+
+
+
+### cloneNode
+
+```js
+var dupNode = node.cloneNode(deep)
+deep: 默认false
+true: 后代节点也会被克隆
+false: 只克隆本节点，舍弃后代节点
+```
+
+
 
 
 
@@ -362,7 +940,109 @@ Number.isInteger(NaN)
 >
 >事件通常与函数结合使用，函数不会在事件发生前被执行！
 >
->[DOM Event](https://www.w3school.com.cn/jsref/dom_obj_event.asp)
+>[DOM Event | W3school](https://www.w3school.com.cn/jsref/dom_obj_event.asp)
+
+### 标准 Event 属性
+
+下面列出了 2 级 DOM 事件标准定义的属性。
+
+| 属性                                                         | 描述                                           |
+| :----------------------------------------------------------- | :--------------------------------------------- |
+| [bubbles](https://www.w3school.com.cn/jsref/event_bubbles.asp) | 返回布尔值，指示事件是否是起泡事件类型。       |
+| [cancelable](https://www.w3school.com.cn/jsref/event_cancelable.asp) | 返回布尔值，指示事件是否可拥可取消的默认动作。 |
+| [currentTarget](https://www.w3school.com.cn/jsref/event_currenttarget.asp) | 返回其事件监听器触发该事件的元素。             |
+| [eventPhase](https://www.w3school.com.cn/jsref/event_eventphase.asp) | 返回事件传播的当前阶段。                       |
+| [target](https://www.w3school.com.cn/jsref/event_target.asp) | 返回触发此事件的元素（事件的目标节点）。       |
+| [timeStamp](https://www.w3school.com.cn/jsref/event_timestamp.asp) | 返回事件生成的日期和时间。                     |
+| [type](https://www.w3school.com.cn/jsref/event_type.asp)     | 返回当前 Event 对象表示的事件的名称。          |
+
+### 标准 Event 方法
+
+下面列出了 2 级 DOM 事件标准定义的方法。IE 的事件模型不支持这些方法：
+
+| 方法                                                         | 描述                                     |
+| :----------------------------------------------------------- | :--------------------------------------- |
+| [initEvent()](https://www.w3school.com.cn/jsref/event_initevent.asp) | 初始化新创建的 Event 对象的属性。        |
+| [preventDefault()](https://www.w3school.com.cn/jsref/event_preventdefault.asp) | 通知浏览器不要执行与事件关联的默认动作。 |
+| [stopPropagation()](https://www.w3school.com.cn/jsref/event_stoppropagation.asp) | 不再派发事件。                           |
+
+
+
+### MouseEvent
+
+####  Click
+
+* [click | mdn](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/click_event)
+
+#### click / keyboard属性
+
+| 属性                 | 类型                                                         | 描述                                                         |
+| :------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
+| `target` 只读        | [`EventTarget`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget) | 事件对象 (位于DOM树最上面的元素).                            |
+| `type` 只读          | [`DOMString`](https://developer.mozilla.org/en-US/docs/Web/API/DOMString) | 事件类型.                                                    |
+| `bubbles` 只读       | [`Boolean`](https://developer.mozilla.org/en-US/docs/Web/API/Boolean) | 是否冒泡                                                     |
+| `cancelable` 只读    | [`Boolean`](https://developer.mozilla.org/en-US/docs/Web/API/Boolean) | 是否可被取消                                                 |
+| `view` 只读          | [`WindowProxy`](https://developer.mozilla.org/en-US/docs/Web/API/WindowProxy) | [`document.defaultView`](https://developer.mozilla.org/en-US/docs/Web/API/Document/defaultView) (该文档的`window` 对象) |
+| `detail` 只读        | `long` (`float`)                                             | 在短时间内发生的连续点击次数的计数。                         |
+| `currentTarget` 只读 | EventTarget                                                  | 被事件监听触发的节点.                                        |
+| `relatedTarget` 只读 | EventTarget                                                  | 对于 `mouseover`, `mouseout`, `mouseenter` 和`mouseleave` 事件: 值为与其互补的事件(比如`mouseenter` 就为`mouseleave`). 否则为`null`. |
+| `screenX` 只读       | long                                                         | 点击事件发生时鼠标对应的屏幕x轴坐标.                         |
+| `screenY` 只读       | long                                                         | 点击事件发生时鼠标对应的屏幕y轴坐标.                         |
+| `clientX` 只读       | long                                                         | 点击事件发生时鼠标对应的浏览器窗口的x轴坐标.                 |
+| `clientY` 只读       | long                                                         | 点击事件发生时鼠标对应的浏览器窗口的y轴坐标.                 |
+| `button` 只读        | unsigned short                                               | 点击时按下的鼠标按钮: 左键=0, 中间按钮=1 (如果实现的话), 右键=2. 对于配置为左手使用按钮的操作被反转的鼠标，这些值从右向左读取。 |
+| `buttons` 只读       | unsigned short                                               | 当鼠标事件被触发时按钮的buttons: 左键=1, 右键=2, 中间按钮=4, 第四个按钮(通常是"返回")=8,第五个按钮(通常是"前进")=16.若有两个或以上的按钮按下,返回以逻辑或运算形成的合并值.例如左键右键同时按下就返回 3 (=1 \| 2). [更多信息](https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent). |
+| `mozPressure` 只读   | float                                                        | 压力应用于接触或tabdevice时生成的事件的数量；该值介于0（最小压力）和1（最大压力）。 |
+| `ctrlKey` 只读       | boolean                                                      | 当事件被触发时ctrl按键被按下时为true，否则为false。          |
+| `shiftKey` 只读      | boolean                                                      | 当事件被触发时shift按键被按下时为true，否则为false。         |
+| `altKey` 只读        | boolean                                                      | 当事件被触发时alt按键被按下时为true，否则为false。           |
+| `metaKey` 只读       | boolean                                                      | 当事件被触发时meta按键被按下时为true，否则为false。          |
+
+#### mouse 
+
+* [mouseup | mdn](https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/mouseup)
+* [mousedown | mdn](https://developer.mozilla.org/zh-CN/docs/Web/Reference/Events/mousedown)
+* [contextmenu](https://developer.mozilla.org/en-US/docs/Web/API/Element/contextmenu_event)
+* 
+
+| [onmousedown](https://www.w3school.com.cn/jsref/event_onmousedown.asp) | 鼠标按钮被按下。     |
+| ------------------------------------------------------------ | -------------------- |
+| [onmousemove](https://www.w3school.com.cn/jsref/event_onmousemove.asp) | 鼠标被移动。         |
+| [onmouseout](https://www.w3school.com.cn/jsref/event_onmouseout.asp) | 鼠标从某元素移开。   |
+| [onmouseover](https://www.w3school.com.cn/jsref/event_onmouseover.asp) | 鼠标移到某元素之上。 |
+| [onmouseup](https://www.w3school.com.cn/jsref/event_onmouseup.asp) | 鼠标按键被松开。     |
+
+
+
+### KeyboardEvent
+
+| [onkeydown](https://www.w3school.com.cn/jsref/event_onkeydown.asp) | 某个键盘按键被按下。       |
+| ------------------------------------------------------------ | -------------------------- |
+| [onkeypress](https://www.w3school.com.cn/jsref/event_onkeypress.asp) | 某个键盘按键被按下并松开。 |
+| [onkeyup](https://www.w3school.com.cn/jsref/event_onkeyup.asp) | 某个键盘按键被松开。       |
+
+
+
+ ### event.stopPropagation( )
+
+> 只阻止事件往上冒泡
+
+
+
+### event.preventDefault( )
+
+> 阻止默认事件
+
+> `return false` 
+>
+> 不仅阻止了事件往上冒泡，而且阻止了事件本身(默认事件)
+
+```
+$("#div1").mousedown(function(event){
+    var e=e||window.event;
+    return false;
+});
+```
 
 
 

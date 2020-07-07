@@ -1,6 +1,20 @@
 # linux
 
+* init 
 
+  > init 0  为关机
+  >
+  > init 1  为重启
+
+* ssh-keygen -t rsa   
+
+  > 生成ssh公钥和私钥
+
+* ```
+  # 修改hostname
+  hostnamectl set-hostname centos77
+  # 使用这个命令会立即生效且重启也生效
+  ```
 
 ## 命令
 

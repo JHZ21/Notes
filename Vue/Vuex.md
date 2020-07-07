@@ -2,9 +2,35 @@
 
 
 
+## dispatch
+
+> 调用 mutation
+>
+> ```js
+> this.$store.dispatch('fnc', value)
+> ```
+
+
+
+## commit 
+
+> 调用 action
+>
+> ```js
+> this.$store.dispatch('fnc', value)
+> ```
+
+
+
+
+
+# Vuex + Typescript
+
+
+
 ## 调用关系
 
-#### Mutation 和 Getter 里不用调用 Vuex里的异步函数
+#### Mutation 和 Getter 里不能调用 Vuex里的异步函数
 
 > 但可以调用外部的(异步)函数
 
@@ -24,6 +50,6 @@
 
 
 
-## ts: @Action 
+##  @Action 
 
 > 异步，如果想要返回值，请使用 async await (推荐)

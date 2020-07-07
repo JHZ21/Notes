@@ -12,3 +12,48 @@
 
 
 
+### **宏任务**
+
+| #                     | 浏览器 | Node |
+| --------------------- | ------ | ---- |
+| setTimeout            | √      | √    |
+| setInterval           | √      | √    |
+| setImmediate          | x      | √    |
+| requestAnimationFrame | √      | x    |
+
+ 
+
+### **微任务**
+
+| #                          | 浏览器 | Node |
+| -------------------------- | ------ | ---- |
+| process.nextTick           | x      | √    |
+| MutationObserver           | √      | x    |
+| Promise.then catch finally | √      | √    |
+
+
+
+# Node
+
+[Node.js中的执行顺序（微任务与事件循环）](https://blog.csdn.net/xgangzai/article/details/89647029)
+
+事件循环最阶段最详细的讲解:  [nodejs事件循环 | 官网](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/#setimmediate-vs-settimeout)
+
+* timers阶段
+
+  次阶段包括setTimeout()和setInterval()
+
+* IO callbacks
+
+  大部分的回调事件，普通的caollback
+
+* poll阶段
+
+  网络连接，数据获取，读取文件等操作
+
+* check阶段
+
+  setImmediate()在这里调用回调
+
+* close阶段
+  一些关闭回调，例如socket.on(‘close’, …)

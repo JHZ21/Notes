@@ -1,5 +1,187 @@
 # Vue 2.x
 
+* [Vue.js 源码揭秘](https://ustbhuangyi.github.io/vue-analysis/)
+
+* [30 道 Vue 面试题，内含详细讲解（涵盖入门到精通，自测 Vue 掌握程度）| 掘金](https://juejin.im/post/5d59f2a451882549be53b170)
+
+
+
+## SSR vs Prerendering 
+
+* [Vue.js 服务器端渲染指南](https://ssr.vuejs.org/zh/)
+
+* 如果你使用 webpack，你可以使用 [prerender-spa-plugin](https://github.com/chrisvfritz/prerender-spa-plugin) 轻松地添加预渲染。
+
+
+
+## 父子生命周期顺序
+
+* [vue 父子组件的生命周期顺序](https://www.cnblogs.com/status404/p/8733629.html)
+
+### 一、加载渲染过程
+
+```repl
+父beforeCreate->父created->父beforeMount->子beforeCreate->子created->子beforeMount->子mounted->父mounted
+```
+
+### 二、子组件更新过程
+
+```repl
+父beforeUpdate->子beforeUpdate->子updated->父updated
+```
+
+### 三、父组件更新过程
+
+```repl
+父beforeUpdate->父updated
+```
+
+### 四、销毁过程
+
+```repl
+父beforeDestroy->子beforeDestroy->子destroyed->父destroyed
+```
+
+
+
+## 组件间通信
+
+>[前端面试之Vue中组件通信的方式 | 掘金](https://juejin.im/post/5e7f18706fb9a03c300f7caa)
+
+* prop / $emit
+
+  * 可以实现父子通信
+
+  * 父子组件间数据传递, 有较特殊需求时，使用$refs, 直接调用子组件方法，属性，更加简便。props 和  $emit 能力有局限性。（如 限制: 传递的props 不能被修改）
+
+    当然也可以使用Vuex
+
+* .sync
+
+  * 语法糖，增加实现子传父功能， 已达到所谓的同步
+
+  * 单向：内部prop值不能自己主动改变，应该通过emit改变父组件prop，来改变子组件得到的值
+
+  * 子组件通过 $emit("update:prop"， val)
+
+  > ```vue
+  > // 父组件内
+  > <child :visible.sync="dialogVisible"></child>
+  > || ||
+  > \/ \/
+  > <child :visible="dialogVisible" @update:visible="val => visible=val"></child>
+  > ```
+  >
+  > ```js
+  > //Child.vue
+  > 
+  > func(val) {
+  > 	this.$emit('update:visible', val)
+  > }
+  > ```
+
+  
+
+* attrs / listeners
+
+  > [vm.$attrs](https://cn.vuejs.org/v2/api/#vm-attrs)
+  >
+  > [vm.$listeners](https://cn.vuejs.org/v2/api/#vm-listeners)
+
+  * 实现跨级通信，即父孙组件通信
+
+  * 中间组件(子组件) 需要使用 `v-bind="$attrs" v-on="$listeners" `将属性与监听事件放下去
+
+    > 就`中间组件`要有所处理，然后父孙就可以，通过像父子通信的方式通信
+    >
+    > 使用 $attrs ，传递属性
+    >
+    > 使用 $listeners , 传递事件
+
+    ```vue
+    //child.vue
+    <template>
+        <GrandChild v-bind="$attrs" v-on="$listeners"></GrandChild>
+    </template>
+    
+    ```
+
+    
+
+* provide inject
+
+* EventBus
+
+* vuex
+
+* $refs
+
+* parent children
+
+
+
+
+
+
+
+## slot 插槽
+
+> [插槽 | 官网](https://cn.vuejs.org/v2/guide/components-slots.html)
+
+* 具名插槽
+
+```vue
+// 父组件
+<base-layout>
+  <template v-slot:header>
+    <h1>Here might be a page title</h1>
+  </template>
+
+  <p>A paragraph for the main content.</p>
+  <p>And another one.</p>
+
+  <template v-slot:footer>
+    <p>Here's some contact info</p>
+  </template>
+</base-layout>
+
+// 子组件
+<div class="container">
+  <header>
+    <slot name="header"></slot>
+  </header>
+  <main>
+    <slot></slot>
+  </main>
+  <footer>
+    <slot name="footer"></slot>
+  </footer>
+</div>
+
+```
+
+
+
+
+
+
+
+
+
+
+
+### 父子组件数据传递
+
+> 
+
+
+
+## 变量命名
+
+> because properties starting with "$" or "_" are not proxied in the Vue instance to prevent conflicts with Vue internals. 
+>
+> 不让以 $ 或者 _ 开头， 避免与内部属性冲突
+
 
 
 ## template
@@ -65,9 +247,11 @@
 
 ## computed
 
+>  当计算属性最终计算的值发生变化才会触发重新渲染
+>
 >  计算属性是属性，不能加（） 
 >
-> method 需要加 （）
+>  method 需要加 （）
 
 
 
@@ -170,7 +354,11 @@ this.$refs.itemRef[1];
 .......
 ```
 
+## ref.xxx  undefined
 
+> 需要等待组件创建完毕，否则无法获得组件对象
+>
+> 可以调用时，判断下是否存在
 
 
 

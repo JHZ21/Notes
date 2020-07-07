@@ -2,6 +2,13 @@
 
 
 
+```bash
+npm init -y
+// 初始化项目，并选项都为yes
+```
+
+
+
 ### [手把手教你用npm发布包](https://blog.csdn.net/taoerchun/article/details/82531549) 
 
 > 按教程来，vue init ...
@@ -45,6 +52,12 @@ npm config set registry https://registry.npm.taobao.org
 
 npm config set registry https://registry.npmjs.org
 ```
+
+
+
+* npm config get registry
+
+  > 显示 npm 的镜像地址
 
 
 

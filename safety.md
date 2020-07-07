@@ -1,19 +1,24 @@
 # Safety
 
+* [寒冬求职之你必须要懂的Web安全](https://juejin.im/post/5cd6ad7a51882568d3670a8e)
 
 
 
-
-## XSS (Cross Site Scripting) 
+## 1. XSS (Cross Site Scripting) 
 
 > **跨站脚本攻击**
+>
+> 攻击模式：注入各种脚本，节点，以到目的，
+>
+> 防御：转译，X-XSS-Protection，CSP等
 
 
 
 ### 攻击分类
 
-* 反省型：url参数直接注入
-* 存储型：存储到DB后读取时注入
+* 反射型(非持久型)：url参数直接注入
+* 存储型(持久性)：存储到DB后读取时注入
+* DOM型
 
 ### 攻击注入点
 
@@ -49,7 +54,21 @@ cosnt escapeHtml = function(str) {
 }
 html 属性使用引号包裹，而不是裸露
 <img src="xxx" />  <img src=xxx />
+ 
 ```
+
+* SOL
+
+```
+const replaceSql = value => {
+	if (value || value.length) {
+		return value
+	}
+	return value.replace(//)
+}
+```
+
+
 
 * Js
 
@@ -116,17 +135,19 @@ const xssFilter = function(html) {
 
 
 
-## CSRF (Cross Site Request Forgy)
+## 2. CSRF (Cross Site Request Forge)
 
 > **跨站请求伪造**
 >
-> 不访问A网站前端，
+> A: 被攻击方， B: 攻击方
 >
-> 而在B网站向A网站后端发起了携带A网站的cookies
+> B网站`伪造A网站的请求`，并携带了A网站用户的cookie，可以骗过后端验证，伪装成用户，进行攻击
 >
-> 的请求，特点有referer为B网站
+> [Content-Security-Policy | mdn](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy)
 
+* [`frame-ancestors`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/frame-ancestors)
 
+  Specifies valid parents that may embed a page using ...
 
 ### SameSite
 
@@ -134,19 +155,19 @@ const xssFilter = function(html) {
 
 
 
-### 验证码
+### 验证码  (体验不好)
 
 > 验证码库：[*ccap* - *npm*](https://www.baidu.com/link?url=7mys-lAevtJQPjAhezdXrVmyk0_EJHVbdUcu9x33_nuM09KF9g0XEIRvvhpWFaCm&wd=&eqid=8d3d97de00001a28000000055e69004c)
 
 
 
-### token
+### token (主流)
 
-> 下发token, 提交时携带，并进行比较是否匹配
+> 需要提交时，下发token, 提交时携带，并进行比较是否匹配
 
 
 
-### referer
+### referer (不安全，可以被更改)
 
 ```js
 //koa
@@ -161,18 +182,52 @@ if(!myHost.test(referer)) {
 
 
 
-## Cookies问题
+## 3. Cookies问题
 
 
 
 ### cookies特性
 
-* 域名
-* 有效期
-* 路径
-* http-only
-* secure
-* saime-site
+* Name
+* Value
+
+* Domain 
+
+  > 域名
+
+* Path
+
+  > 路径
+
+* Expires/Max-Age 
+
+  > 有效期
+
+* Http-only
+
+  > true: js不等操作cookie ， 包括获取，查看，更改等
+  >
+  > 仅http 可以覆盖
+
+* Secure
+
+  > true: 请求需要使用https
+
+* SameSite
+
+  * [预测最近面试会考 Cookie 的 SameSite 属性](https://juejin.im/post/5e718ecc6fb9a07cda098c2d)
+
+  > Google 
+  >
+  > cookie的限制
+  >
+  > None: 不限制
+  >
+  > Lax：
+  >
+  > Strict
+
+  ![](https://user-gold-cdn.xitu.io/2020/3/18/170eb95c97d98564?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
 
 
 
@@ -244,7 +299,7 @@ originalText += decipher.final('utf8')
 
 
 
-## 点击劫持
+## 4. 点击劫持
 
 >手段：frame 内嵌被攻击者的网站
 
@@ -276,9 +331,7 @@ originalText += decipher.final('utf8')
 
  
 
-
-
-## 传输安全
+## 5. 传输安全
 
 
 

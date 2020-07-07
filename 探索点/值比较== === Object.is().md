@@ -8,7 +8,7 @@
 
 * 如果 x 与 y 皆为 null 或 undefined 中的一种类型，则返回 true（null == undefined // true）；否则返回 false（null == 0 // false）；(null, undefined不会转换为其他类型)
 
-* 如果 x,y 类型不一致，且 x,y 为 String、Number、Boolean 中的某一类型，则将 x,y 使用 toNumber 函数转化为 Number 类型再进行比较；
+* 如果 x,y 类型不一致，且 x,y 为 `String、Number、Boolean `中的某一类型，则将 x,y 使用 toNumber 函数转化为 Number 类型再进行比较；
 
 * 如果 x，y 中有一个为 Object，则首先使用 ToPrimitive 函数将其转化为**原始类型**，再进行比较。（日期对象转换成字符串，其它对象先尝试调用valueOf()方法再尝试使用toString()） 
 

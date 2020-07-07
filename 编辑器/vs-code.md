@@ -2,6 +2,44 @@
 
 
 
+## Extensions
+
+
+
+### Settings Sync 
+
+
+
+### REST Client
+
+>REST Client allows you to send HTTP request and view the response in Visual Studio Code directly.
+
+> 在 xxx.txt 、 xxx.http  等文件内（只有格式不会报错） , 编写请求
+>
+> ``` http
+> https://example.com/comments/1
+> ```
+>
+> ``` http
+> POST https://example.com/comments HTTP/1.1
+> content-type: application/json
+> 
+> {
+>  "name": "sample",
+>  "time": "Wed, 21 Oct 2015 18:27:50 GMT"
+> }
+> ```
+>
+> 使用快捷键： `Ctrl+Alt+R`  ( `Cmd+Alt+R` for macOS)
+>
+> 即可在直接在编辑器内，看到response 内容
+
+
+
+
+
+
+
 ## 重启vs code 
 
 > 打开：“命令面板”  :  `CTRL + SHITF + P`
@@ -18,33 +56,11 @@
 
 
 
-## REST Client
-
->REST Client allows you to send HTTP request and view the response in Visual Studio Code directly.
-
-> 在 xxx.txt 、 xxx.http  等文件内（只有格式不会报错） , 编写请求
->
-> ``` http
-> https://example.com/comments/1
-> ```
->
-> ``` http
-> POST https://example.com/comments HTTP/1.1
-> content-type: application/json
-> 
-> {
->     "name": "sample",
->     "time": "Wed, 21 Oct 2015 18:27:50 GMT"
-> }
-> ```
->
-> 使用快捷键： `Ctrl+Alt+R`  ( `Cmd+Alt+R` for macOS)
->
-> 即可在直接在编辑器内，看到response 内容
-
 
 
 ##  代码格式化配置
+
+[Vue中*ESlint配置*文件*eslintrc.js*文件详解_JavaScript_w..._CSDN博客](https://www.baidu.com/link?url=HJ-qiGqye02AMqN08noPU7T6mKmBa-Z2GJrC0wD_rwmJ-W6gDulQ0m6KFpiPV5E-AqamDcw880gJXdF7M4XuXJdHO1GDfOz0Ph6N49rZena&wd=&eqid=dd582ca60000569a000000055e8dff6c)
 
 ### 因地制宜(good!)
 

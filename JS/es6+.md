@@ -2,9 +2,26 @@
 
 
 
-## es8
+## es2017
 
-### async/await 与 forEach 问题
+### async/await
+
+* 在后端, 异步不去await等待，就不执行
+
+* 与Promise.all 组合
+
+```js
+async () => {
+    const members = await Promise.all(team.map(temmber => {
+    	return  users.findOne({userId: temmber.userId})  // 异步函数(async)
+    }))
+}
+
+```
+
+
+
+* 与 forEach 问题
 
 > 函数内部，将异步转为同步效果，等待
 >
@@ -22,11 +39,117 @@ async () => {
 // 
 ```
 
-
+> [Promise.all结合async/await](https://blog.csdn.net/Creabine/article/details/87344158)
 
 
 
 ## es6
+
+
+
+### 模块化
+
+```js
+// ES Module
+improt library from 'library'
+// CommonJs
+const library = require('library')
+// AMD
+require(['library'], function() {})
+
+```
+
+
+
+
+
+### flat
+
+* [flat() | MDN](https://www.baidu.com/link?url=saBnGesuk0inSI52EKDOyFZki2AIAr6JPuQrZbfQwTopuH4u9PBgUPUhwNb3WoLpoPSwvxFiAuYb5BZmQ1You1m-4oehJYHQzvcMdbz0Nh8XVCGBjiIuTVYqZoCcpd63_3G8GhCex5XEwHKJINKu6_&wd=&eqid=e4ca32cd00076d9f000000055e91d2ed)
+
+* 用法
+
+  ```js
+  var newArray = arr.flat([depth])
+  ```
+
+* 参数
+
+  > `depth` 可选
+  >
+  > 提取嵌套数组的结构深度，默认值为 1
+  >
+  > 也可以 Infinity
+
+* 返回值
+
+  > 一个包含将数组与子数组中所有元素的新数组
+
+* flat方法会移除数组中的空项 (: empty)
+
+
+
+### Promise
+
+* [手写Promise 20行](https://juejin.im/post/5e6f4579f265da576429a907)
+* [异步编程二三事 | Promise/async/Generator实现原理解析 | 9k字](https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc)
+
+```js
+function Promise(exec) {
+	this.onResolvedCbs = []
+	exec(value => {
+		setTimeout(() => {
+			this.data = value
+			this.onResolvedCbs.forEach(item => item(value))
+		})
+	})
+}
+  
+Promise.prototype.then = function(onResolved) {
+	return new Promise(resolve => {
+		this.onResolvedCbs.push(() => {
+			const result = onResolved(this.data)
+			result instanceof Promise ? result.then(resolve) : resolve(result)
+		})
+	})
+}
+```
+
+
+
+
+
+### Object.freeze()
+
+> **冻结**一个对象， 不能添加新的属性，
+>
+> 并将所有现有属性标记为不可配置,
+>
+> value也不能修改,
+>
+> 此外，该对象的原型也不能被修改，
+>
+> 浅冻结
+
+* [Object.freeze() | mdn](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)
+
+
+
+### Object.seal()
+
+> `封闭`一个对象, 阻止添加新属性，
+>
+> 并将所有现有属性标记为不可配置,
+>
+> 但原来是可写value的就可以改变
+>
+> 浅封闭
+>
+> 但可以被覆盖掉，obj= {}
+
+* [Object.seal() | mdn](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/seal)
+
+
 
 
 
@@ -36,13 +159,11 @@ async () => {
 
 
 
-## Promise 重点
-
-[JavaScript Promise迷你书（中文版）](http://liubin.org/promises-book/#introduction)
+## Promise 另建文档
 
 
 
-## 结构赋值
+## 解构赋值
 
 > 可以将属性/值从对象/数组中取出,赋值给其他变量。
 >
@@ -52,6 +173,31 @@ async () => {
 > var x = [1, 2, 3, 4, 5];
 > var [y, z] = x;
 > ```
+
+### 提取变量赋给新变量
+
+```js
+var o = {p: 42, q: true};
+var {p: foo, q: bar} = o;
+ 
+console.log(foo); // 42 
+console.log(bar); // true 
+```
+
+### 解构对象时会查找原型链
+
+```js
+// 声明对象
+var obj = {};
+// 在原型链中定义一个属性 prot
+obj.__proto__.prot = '456';
+const {prot} = obj;
+// prot "456"（访问到了原型链）
+```
+
+
+
+
 
 
 
