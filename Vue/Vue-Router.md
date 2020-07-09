@@ -1,5 +1,47 @@
 # Vue-Router 
 
+
+
+## hash模式与history模式与实现
+
+* [hash模式与history模式与实现 | 好文](https://www.cnblogs.com/8023-CHD/p/11383395.html)
+
+* hash 模式
+
+  ```js
+  window.location.hash = 'qq' // 设置 url 的 hash，会在当前url后加上 '#qq'
+   
+  var hash = window.location.hash // '#qq' 
+   
+  window.addEventListener('hashchange', function(){
+      // 监听hash变化，点击浏览器的前进后退会触发
+  })
+  ```
+
+* history 模式
+
+  ```js
+  window.history.pushState(state, title, url)
+  // state：需要保存的数据，这个数据在触发popstate事件时，可以在event.state里获取
+  // title：标题，基本没用，一般传 null
+  // url：设定新的历史记录的 url。新的 url 与当前 url 的 origin 必须是一樣的，否则会抛出错误。url可以是绝对路径，也可以是相对路径。
+  //如 当前url是 https://www.baidu.com/a/,执行history.pushState(null, null, './qq/')，则变成 https://www.baidu.com/a/qq/，
+  //执行history.pushState(null, null, '/qq/')，则变成 https://www.baidu.com/qq/
+   
+  window.history.replaceState(state, title, url)
+  // 与 pushState 基本相同，但她是修改当前历史记录，而 pushState 是创建新的历史记录
+   
+  window.addEventListener("popstate", function() {
+      // 监听浏览器前进后退事件，pushState 与 replaceState 方法不会触发             
+  });
+   
+  window.history.back() // 后退
+  window.history.forward() // 前进
+  window.history.go(1) // 前进一步，-2为后退两步，window.history.lengthk可以查看当前历史堆栈中页面的数量
+  ```
+
+  
+
 ## 导航守卫
 
 * 守卫是异步解析执行，此时导航在所有守卫 resolve 完之前一直处于 **等待中**。

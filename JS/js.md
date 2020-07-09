@@ -39,7 +39,7 @@
 
 ## 数据类型
 
-* 值类型与引用类型
+* 值类型与
 
 - 7 种原始类型
   
@@ -62,7 +62,12 @@
     >```js
     >Symbol("foo") === Symbol("foo"); // false
     >```
+  
+- 引用类型
+
 - Object
+
+
 
 ## instance.constructor
 
