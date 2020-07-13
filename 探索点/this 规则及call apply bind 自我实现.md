@@ -1,11 +1,11 @@
 # this 
 
+> `this`指向的是函数的**执行环境**，`this`取决于其被谁调用了，而不是被谁定义了。
+
 ## 好文
 
 * [JavaScript中的this](https://juejin.im/post/59748cbb6fb9a06bb21ae36d)
 * [apply/call/bind 自我实现](https://mp.weixin.qq.com/s?__biz=MzI5MjUxNjA4Mw==&mid=2247485110&idx=1&sn=97fd7d83e35495ca1077cb7d3745db50&chksm=ec017f2adb76f63c818c25a8b9cd3da6d5164521fd3572aa042d55b339331807acf4cd106cfe&mpshare=1&scene=23&srcid=&sharer_sharetime=1570782915792&sharer_shareid=4ecc76568e47f0902b9a60f7ac6e2b72#rd)
-
-
 
 
 

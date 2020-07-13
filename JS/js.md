@@ -128,9 +128,50 @@ document.all
 
 
 
-### Object 方法 另建
+### Object 的方法 另建
 
 > 已另建文档
+
+
+
+### Function 
+
+> [Function |mdn](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function)
+
+
+
+* [length](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/length)
+
+  > 指明函数的形参个数
+
+* 
+
+* [apply()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
+
+  ```js
+  func.apply(thisArg, [argsArray])
+  ```
+
+* [bind()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)
+
+  * 调用方法
+
+  ```js
+  function.bind(thisArg[, arg1[, arg2[, ...]]])
+  // 输出 function： 原函数的拷贝，并指定了this和部分初始参数
+  ```
+
+* [call()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call)
+
+  * 调用方法
+
+  ```js
+  function.call(thisArg, arg1, arg2, ...)
+  ```
+
+  
+
+* 
 
 
 
@@ -335,6 +376,16 @@ for(let i=0;i<arr.length ; i++){console.log(i, arr[i])}
 
 * [fill()](https://www.runoob.com/jsref/jsref-fill.html)
 
+  ```js
+  arr.every(callback[, thisArg])
+  // callback:
+  callback(element, index?, array?)
+  // ele:遍历的当前值,index: 当前值的索引，array: 调用every的数组，即arr 
+  // thisArg : 执行callback的this 值
+  ```
+
+  
+
 * [filter()](https://www.runoob.com/jsref/jsref-filter.html)
 
 * [find()](https://www.runoob.com/jsref/jsref-find.html)
@@ -440,7 +491,19 @@ for(let i=0;i<arr.length ; i++){console.log(i, arr[i])}
 
 * [max(x,y)](https://www.w3school.com.cn/jsref/jsref_max.asp)
 
+  * 实例
+
+    ```js
+    Math.max() // -Infinity
+    ```
+
 * [min(x,y)](https://www.w3school.com.cn/jsref/jsref_min.asp)
+
+  * 实例
+
+    ```js
+    Math.min() // Infinity
+    ```
 
 * [abs(x)](https://www.w3school.com.cn/jsref/jsref_abs.asp)
 
@@ -477,7 +540,7 @@ Math.ceil(-12.2)
 
 ### Math.round()
 
-> 四舍五入，正入正，负如负
+> 四舍五入，舍靠0，正入正，负如负
 
 ```js
 Math.round(0.5)
