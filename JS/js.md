@@ -140,7 +140,7 @@ document.all
 * 语法
 
 ```js
-const p = new Proxy(target, handler)
+const p = new Proxy(target:object, handler:object)
 ```
 
 
@@ -150,6 +150,10 @@ const p = new Proxy(target, handler)
 > **`Set`** 对象允许你存储任何类型的唯一值，无论是[原始值](https://developer.mozilla.org/zh-CN/docs/Glossary/Primitive)或者是对象引用。
 >
 > [Set](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set)
+
+* [Set.prototype.add(value)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set/add)
+* [Set.prototype.delete(value)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set/delete)
+* [Set.prototype.has(value)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set/has)
 
 
 
@@ -162,6 +166,10 @@ const p = new Proxy(target, handler)
 > [Map](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map)
 
 * 储存在Map `键名`，`键值`的数据，会形成对数据对象的引用，一旦不再需要这两个对象，我们就必须手动删除这个引用，否则垃圾回收机制就不会释放对象占用的内存。
+* [Map.prototype.get(key)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map/get)
+* [Map.prototype.set(key, value)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map/set)
+* [Map.prototype.delete(key)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map/delete)
+* 
 
 ### WeakMap
 
@@ -391,7 +399,10 @@ for(let i=0;i<arr.length ; i++){console.log(i, arr[i])}
 
   ```js
   array.splice(index,howmany,item1,.....,itemX)
+  // 返回删除的项所组成的数组， [delete1,..,,deleteX]
   ```
+
+  * itemX 插入 index 的前面
 
   
 
@@ -581,6 +592,13 @@ Number.isInteger(NaN)
 * [slice()](https://www.w3school.com.cn/jsref/jsref_slice_string.asp)
 
   > string 没有splice()
+  >
+  > ```js
+  > stringObject.slice(start,end)
+  > start,end 可负
+  > ```
+  >
+  > 
 
 * [small()](https://www.w3school.com.cn/jsref/jsref_small.asp)
 
@@ -588,10 +606,16 @@ Number.isInteger(NaN)
 
 * [substr()](https://www.w3school.com.cn/jsref/jsref_substr.asp)
 
+  > ```js
+  > stringObject.substr(start,length)
+  > ```
+
 * [substring()](https://www.w3school.com.cn/jsref/jsref_substring.asp)
 
   > ```js
-  > stringObject.substring(start,stop)
+  > stringObject.substring(start,stop = str.length)
+  > start,stop 非负， 
+  > 为负：则值为0，从大小顺序颠倒也无妨
   > ```
 
 * [trim()  | 菜鸟教程](https://www.baidu.com/link?url=16cr_Kynk7pK4RtwcdOCYyLhVS_j2fodIky8MRPA1HGcXV7bsySJ5zfiaRy4cXGhK3EEfPn0QkRcqSsBA2E-2_&wd=&eqid=84478eb3000009cc000000055e9f1940)

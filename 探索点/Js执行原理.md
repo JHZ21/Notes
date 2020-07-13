@@ -6,9 +6,14 @@
 
 [JavaScript的执行原理](https://blog.csdn.net/gy_u_yg/article/details/72869315)
 
-[Tasks, microtasks, queues and schedules ]( https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/ )  文章里的可交互动画太强了
+[Tasks, microtasks, queues and schedules]( https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/ )  文章里的可交互动画太强了
 
  [图解搞懂 JavaScript 引擎 Event Loop —— 掘金](https://juejin.im/post/5a6309f76fb9a01cab2858b1) （图解更详细，逻辑上，也讲透了一些点）
+
+
+
+* 微任务执行时，产生新的微任务，会投入队列，并按序执行它
+* 主程序执行一遍，执行**全部**微任务，执行**一个**宏任务，执行全部微任务，执行一个宏任务
 
 
 

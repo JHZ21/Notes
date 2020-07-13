@@ -2,6 +2,8 @@
 
 [js学习之——数据类型间的转换以及==和===的理解](https://www.cnblogs.com/qiaoyun/p/10560273.html)
 
+* [JavaScript 的怪癖 1：隐式类型转换](https://justjavac.com/javascript/2013/04/08/javascript-quirk-1-implicit-conversion-of-values.html)
+
 # == 
 
 * 如果 x 或 y 中有一个为 NaN，则返回 false；
@@ -10,6 +12,15 @@
 
 * 如果 x,y 类型不一致，且 x,y 为 `String、Number、Boolean `中的某一类型，则将 x,y 使用 toNumber 函数转化为 Number 类型再进行比较；
 
+  ```js
+  '' == 0 // true 
+  false == 0 // true
+  false == '0' // true
+  true == '1' // true
+  ```
+
+  
+
 * 如果 x，y 中有一个为 Object，则首先使用 ToPrimitive 函数将其转化为**原始类型**，再进行比较。（日期对象转换成字符串，其它对象先尝试调用valueOf()方法再尝试使用toString()） 
 
   > 而在 ES6 中引入 Symbol 类型之后，JavaScript 会优先调用对象的 [Symbol.toPrimitive] 方法来将该对象转化为原始类型，那么方法的调用顺序就变为了：
@@ -17,6 +28,14 @@
   * 当 `obj[Symbol.toPrimitive](preferredType)` 方法存在时，优先调用该方法；
   * 如果 preferredType 参数为 String，则依次尝试 `obj.toString()` 与 `obj.valueOf()`；
   * 如果 preferredType 参数为 Number 或者默认值，则依次尝试 `obj.valueOf()` 与 `obj.toString()`。
+
+```js
+[].valueOf() // []
+[].toString() // ""
+[] == 0 // true
+[] == '' // true
+0 == '' // true
+```
 
 
 
