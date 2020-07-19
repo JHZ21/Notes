@@ -127,12 +127,12 @@ to {left:200px;}
 
 ### 创建层叠上下文
 
-* z-index : 非默认值aut;  如：z-index: 0;
+* z-index : 非默认值auto;  如：z-index: 0;
 * CSS3: transform , 如：tranform: scale(1);
 
 ###  补充
 
-* 元素成为地位元素，其z-index就会自动生效，值为默认的auto
+* 元素成为地位元素，其z-indoex就会自动生效，值为默认的auto
 * 不支持z-index属性的元素,  天然是z-index: auto
 
 

@@ -398,6 +398,17 @@ for(let i=0;i<arr.length ; i++){console.log(i, arr[i])}
 
 * [from()](https://www.runoob.com/jsref/jsref-from.html)
 
+  * 调用
+
+  ```js
+  Array.from(object, mapFunction?, thisValue?)
+  // object: 需要转换微数组的对象
+  // mapFunction: 数组中每个元素要调用的函数
+  // thisValue: mapFunction 中的 this 对象
+  ```
+
+  
+
 * [includes()](https://www.runoob.com/jsref/jsref-includes.html)
 
 * [indexOf()](https://www.runoob.com/jsref/jsref-indexof-array.html)
@@ -580,6 +591,20 @@ Math.floor(-0.000001)
 
 
 
+* [parsetInt](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/parseInt)
+
+  > js内置方法
+
+  * 调用
+
+    ```js
+    parseInt(string, radix?);
+    //string: 被解析的值
+    //radix: 从 2 到 36，代表该进位系统的数字
+    ```
+
+
+
 ### Number.toFixed()
 
 > 可把 Number 四舍五入为指定小数位数的数字
@@ -728,6 +753,16 @@ Number.isInteger(NaN)
 > [JS Events](https://www.w3school.com.cn/jsref/jsref_events.asp)
 
 
+
+stopPropagration 
+
+> 阻止事件的冒泡
+
+
+
+preventDefault
+
+> 阻止默认事件的方法
 
 
 
