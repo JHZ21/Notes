@@ -10,6 +10,7 @@
 
 * [理解RESTful架构 2011| 阮一峰](http://www.ruanyifeng.com/blog/2011/09/restful.html)
 
+* [带你理解加密、Hash和签名](https://blog.csdn.net/lvzishen123/article/details/86141958)
 
 
 ## http 版本比较
@@ -17,6 +18,39 @@
 > [HTTP1.0、HTTP1.1 和 HTTP2.0 的区别](http://mp.weixin.qq.com/s/GICbiyJpINrHZ41u_4zT-A)
 
 
+
+### http/0.9
+
+> 于1991提出
+>
+> 需求简单：用于传递HTML超文本的内容
+
+* HTTP都是基于TCP协议
+* 只有一个请求行，如 GET /index.html
+* 文件内容以ASCII字符流传输
+
+```http
+accept: text/html
+accept-encoding: gzip, deflate, br
+accept-Charset: ISO-8859-1,utf-8
+accept-language: zh-CN,zh
+```
+
+```http
+content-encoding: br
+content-type:text/html;charset=UTF-8
+```
+
+
+
+
+
+### http/1.0
+
+> 支持更多多种文件
+
+* 设置了请求头与响应头来协商，文件的类型，压缩方案，编码格式，内容语言。
+* 
 
 
 

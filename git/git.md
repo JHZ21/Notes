@@ -2,6 +2,23 @@
 
 
 
+## 配置多个Git账户
+
+* [Mac下配置多个Git账户](https://www.jianshu.com/p/6507ce357ad2)
+
+
+
+```git
+// 查看全局用户名与邮箱
+git config --global user.name
+
+git config --global user.email
+```
+
+
+
+
+
 ## 提交与还原(工作区 <=> 版本库)
 
 > 工作区—（```git add  <file>```)—> 暂存区—(```git commit -m “ ”```)—> 版本库
