@@ -2,11 +2,31 @@
 
 
 
-## 配置多个Git账户
+## 编辑config文件
 
-* [Mac下配置多个Git账户](https://www.jianshu.com/p/6507ce357ad2)
+```git
+git config --global --edit
+```
 
 
+
+
+
+
+
+
+
+## ssh 密钥生成
+
+```
+ssh-keygen -t rsa -C ‘email’
+```
+
+
+
+## 全局用户名与邮箱
+
+* 查看
 
 ```git
 // 查看全局用户名与邮箱
@@ -14,6 +34,22 @@ git config --global user.name
 
 git config --global user.email
 ```
+
+* 清除
+
+```git
+git config --global --unset user.name
+
+git config --global --unset user.email
+```
+
+
+
+
+
+## 配置多个Git账户
+
+* [Mac下配置多个Git账户](https://www.jianshu.com/p/6507ce357ad2)
 
 
 
@@ -347,11 +383,45 @@ git push origin dev
 
 ## alias： 别名
 
+### 设置alias
+
 ```
  git config --global alias.st status
 ```
 
 ```
 git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+```
+
+### 删除alias
+
+```git
+git config --global --unset alias.st
+```
+
+### 编辑config文件
+
+> ​	可以修改alias
+
+```git
+git config --global --edit
+```
+
+### alias 配置
+
+```
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+```
+
+* config 文件
+
+```
+   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+        st = status
+        aa = add .
+        ps = push
+        pl = pull
+        br = branch -v
+        co = checkout
 ```
 

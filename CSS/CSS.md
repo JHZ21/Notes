@@ -2,6 +2,49 @@
 
 
 
+## border-radius
+
+> border-radius的数值超块方形的边长时，圆形大小不变了？
+
+
+
+## line-height
+
+* [line-height | w3school](https://www.w3school.com.cn/cssref/pr_dim_line-height.asp)
+
+* [line-height 垂直居中](https://www.cnblogs.com/huchong-bk/p/11504834.html)
+
+| 值       | 描述                                                 |
+| :------- | :--------------------------------------------------- |
+| normal   | 默认。设置合理的行间距。                             |
+| *number* | 设置数字，此数字会与当前的字体尺寸相乘来设置行间距。 |
+| *length* | 设置固定的行间距。                                   |
+| *%*      | 基于当前字体尺寸的百分比行间距。                     |
+| inherit  | 规定应该从父元素继承 line-height 属性的值。          |
+
+* 指定了一个缩放因子, 后代元素会继承这个缩放因子而不是计算值
+
+
+
+## CSS3实现0.5px的边框
+
+[CSS3实现0.5px的边框](https://www.cnblogs.com/sese/p/7067961.html)
+
+* translate: scale(0.5, 0.5)
+
+
+
+## calc
+
+> calc() 函数用于动态计算长度值。
+
+- 需要注意的是，运算符前后都需要保留一个空格，例如：`width: calc(100% - 10px)`；
+- 任何长度值都可以使用calc()函数进行计算；
+- calc()函数支持 "+", "-", "*", "/" 运算；
+- calc()函数使用标准的数学运算优先级规则；
+
+
+
 ## 居中（不忘初心）
 
 
@@ -284,17 +327,17 @@ width: 900px;
 
 
 
-| 选择器                                                       | 例子                  | 例子描述                                      |
-| ------------------------------------------------------------ | --------------------- | --------------------------------------------- |
-| [:first-of-type](https://www.w3school.com.cn/cssref/selector_first-of-type.asp) | p:first-of-type       | 选择其父元素的第一个 p 子元素。               |
-| [:last-of-type](https://www.w3school.com.cn/cssref/selector_last-of-type.asp) | p:last-of-type        | 选择其父元素的最后一个 p 子元素。             |
-| [:only-of-type](https://www.w3school.com.cn/cssref/selector_only-of-type.asp) | p:only-of-type        | 选择其父元素的p子元素仅一个的p元素            |
-| [:only-child](https://www.w3school.com.cn/cssref/selector_only-child.asp) | p:only-child          | 选择其父元素仅有一个子元素的 p 元素。         |
-| [:nth-child(*n*)](https://www.w3school.com.cn/cssref/selector_nth-child.asp) | p:nth-child(2)        | 选择其父元素的第二个子元素。                  |
-| [:nth-last-child(*n*)](https://www.w3school.com.cn/cssref/selector_nth-last-child.asp) | p:nth-last-child(2)   | 同上，从最后一个子元素开始计数。              |
-| [:nth-of-type(*n*)](https://www.w3school.com.cn/cssref/selector_nth-of-type.asp) | p:nth-of-type(2)      | 选择属于其父元素第二个 p 元素的每个 p 元素。  |
-| [:nth-last-of-type(*n*)](https://www.w3school.com.cn/cssref/selector_nth-last-of-type.asp) | p:nth-last-of-type(2) | 同上，但是从最后一个子元素开始计数。          |
-| [:last-child](https://www.w3school.com.cn/cssref/selector_last-child.asp) | p:last-child          | 选择属于其父元素最后一个子元素每个 <p> 元素。 |
+| 选择器                                                       | 例子                  | 例子描述                                            |
+| ------------------------------------------------------------ | --------------------- | --------------------------------------------------- |
+| [:first-of-type](https://www.w3school.com.cn/cssref/selector_first-of-type.asp) | p:first-of-type       | 选择其父元素的第一个 p 子元素。对其对应标签的查找。 |
+| [:last-of-type](https://www.w3school.com.cn/cssref/selector_last-of-type.asp) | p:last-of-type        | 选择其父元素的最后一个 p 子元素。                   |
+| [:only-of-type](https://www.w3school.com.cn/cssref/selector_only-of-type.asp) | p:only-of-type        | 选择其父元素的p子元素仅一个的p元素                  |
+| [:only-child](https://www.w3school.com.cn/cssref/selector_only-child.asp) | p:only-child          | 选择其父元素仅有一个子元素的 p 元素。               |
+| [:nth-child(*n*)](https://www.w3school.com.cn/cssref/selector_nth-child.asp) | p:nth-child(2)        | 选择其父元素的第二个子元素。                        |
+| [:nth-last-child(*n*)](https://www.w3school.com.cn/cssref/selector_nth-last-child.asp) | p:nth-last-child(2)   | 同上，从最后一个子元素开始计数。                    |
+| [:nth-of-type(*n*)](https://www.w3school.com.cn/cssref/selector_nth-of-type.asp) | p:nth-of-type(2)      | 选择属于其父元素第二个 p 元素的每个 p 元素。        |
+| [:nth-last-of-type(*n*)](https://www.w3school.com.cn/cssref/selector_nth-last-of-type.asp) | p:nth-last-of-type(2) | 同上，但是从最后一个子元素开始计数。                |
+| [:last-child](https://www.w3school.com.cn/cssref/selector_last-child.asp) | p:last-child          | 选择属于其父元素最后一个子元素每个 <p> 元素。       |
 
 > 总结
 >

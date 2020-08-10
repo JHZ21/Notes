@@ -6,6 +6,16 @@
 
 
 
+## v-bind
+
+* v-bind="obj"  传入 键值对
+
+  > 传入对象，方便设置多个属性，子组件需用prop 接收
+
+* V-bind:name = "value" 传入值 
+
+
+
 ## SSR vs Prerendering 
 
 * [Vue.js 服务器端渲染指南](https://ssr.vuejs.org/zh/)

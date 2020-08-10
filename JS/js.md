@@ -1,9 +1,48 @@
 # Js 对象
 
+
+
 ## 链接
 
 * [JavaScript 和 HTML DOM 参考手册 | RUNOOB](https://www.runoob.com/jsref/jsref-tutorial.html)
 * [JavaScript 参考手册 | W3school](https://www.w3school.com.cn/jsref/index.asp)
+
+
+
+## setTimeout
+
+* [setTimetou | ronoob](https://www.runoob.com/jsref/met-win-settimeout.html)
+
+* 语法
+
+  ```js
+  setTimeout(code, milliseconds, param1, param2, ...)
+  // code: 代码串
+  ```
+
+  ```js
+  setTimeout(function, milliseconds, param1, param2, ...)
+  ```
+
+  * 返回一个 ID（数字），可以将这个ID传递给 `clearTimeout`(id) 来取消执行
+
+  
+
+## setInterval
+
+* [setInterval | ronoob](https://www.runoob.com/jsref/met-win-setinterval.html)
+
+* 语法
+
+  ```js
+  setInterval(code, milliseconds);
+  ```
+
+  ```js
+  setInterval(function, milliseconds, param1, param2, ...)
+  ```
+
+  * 返回一个 ID（数字），可以将这个ID传递给 `clearInterval`(id) 来取消执行
 
 
 
@@ -128,15 +167,182 @@ document.all
 
 
 
-### Object 的方法 另建
+### Object 的方法 
 
-> 已另建文档
+
+
+### hasOwnProperty
+
+> 判断指示对象自身属性中是否具有指定的属性,
+>
+> 不包括原型链上的
+
+* [hasOwnProperty | mdn](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty)
+
+* 语法
+
+```js
+obj.hasOwnProperty(prop)
+// Boolean: true | false
+```
+
+```js
+const a = {
+	b: 1
+}
+a.hasOwnProperty('b')
+// true
+```
+
+
+
+### Object.create
+
+* [Object.create() | mdn](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create)
+* 语法
+
+```js
+/* obj = {
+	__proto__: argObj
+} */
+Object.create(proto[, propertiesObject])
+```
+
+
+
+### Object.assign
+
+* [`Object.assign()| MDN`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
+
+> Object.assgin() 拷贝的事对象的属性引用，而不是对象本身，第一位置对象参数，也是返回对象
+>
+> ```JS
+> Object.assign(target, ...sources)
+> ```
+
+
+
+### Object.defineProperty
+
+* [Object.defineProperty()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
+
+```js
+Object.defineProperty(obj, prop, descriptor)
+```
+
+* 数据描述符  和 存取描述符， 只能取其中之一，不能同时是两者
+
+  * 两者都可以配置属性
+
+    - `configurable`
+
+      默认false: 属性无法被删除delete
+
+    - `enumerable`
+
+      默认 `false`
+
+  * 数据描述符独有
+
+    - `value`
+
+    - `writable`
+
+      当且仅当该属性的 `writable` 键值为 `true` 时，属性的值，也就是上面的 `value`，才能被[`赋值运算符`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Assignment_Operators)改变。 默认为 `false`。
+
+  * 存取描述符独有
+
+    * `get`
+
+      该函数的返回值会被用作属性的值。
+      默认为 undefined。
+
+    * `set`
+
+      该方法接受一个参数（也就是被赋予的新值），会传入赋值时的 `this` 对象。
+      默认为 undefined
+
+
+
+### Object.freeze()
+
+* [Object.freeze() | mdn](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)
+
+> 可以**冻结**一个对象。一个被冻结的对象再也不能被修改；冻结了一个对象则不能向这个对象添加新的属性，不能删除已有属性，不能修改该对象已有属性的可枚举性、可配置性、可写性，以及不能修改已有属性的值。此外，冻结一个对象后该对象的原型也不能被修改。`freeze()` 返回和传入的参数相同的对象。
+
+
+
+### Object.seal()
+
+* [Object.seal() | mdn](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/seal)
+
+> 封闭一个对象，阻止添加新属性并将所有现有属性标记为不可配置。当前属性的值只要原来是可写的就可以改变。
+
+
+
+### Object.preventExtensions()
+
+[Object.preventExtensions() | mdn](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/preventExtensions)
+
+> 让一个对象变的不可扩展，也就是永远不能再添加新的属性。
+
+
+
+## Object 子类
+
+
+
+### Promise
+
+> Promise 对象用于表示一个异步操作的最终完成 (或失败), 及其结果值.
+
+* 语法
+
+```js
+new Promise( function(resolve, reject) {...} /* executor */  );
+```
+
+- [Promise.all(iterable)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)
+
+  > 这个方法返回一个新的promise对象，该promise对象在iterable参数对象里所有的promise对象都成功的时候才会触发成功，一旦有任何一个iterable里面的promise对象失败则立即触发该promise对象的失败。这个新的promise对象在触发成功状态以后，会把一个包含iterable里所有promise返回值的数组作为成功回调的返回值，顺序跟iterable的顺序保持一致；如果这个新的promise对象触发了失败状态，它会把iterable里第一个触发失败的promise对象的错误信息作为它的失败错误信息。Promise.all方法常被用于处理多个promise对象的状态集合
+
+- [Promise.allSettled(iterable)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled)
+
+  >  等到所有promises都完成（每个promise返回成功或失败）。 返回一个promise，该promise在所有promise完成后完成。并带有一个对象数组，每个对象对应每个promise的结果。
+
+- [`Promise.any(iterable)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/any)
+
+  > 接收一个Promise对象的集合，当其中的一个promise 成功，就返回那个成功的promise的值。
+
+- [Promise.race(iterable)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/race)
+
+  > 当iterable参数里的任意一个子promise被成功或失败后，父promise马上也会用子promise的成功返回值或失败详情作为参数调用父promise绑定的相应句柄，并返回该promise对象。
+
+- [Promise.reject(reason)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/reject)
+
+  > 返回一个状态为失败的Promise对象，并将给定的失败信息传递给对应的处理方法
+
+- [Promise.resolve(value)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve)
+
+  > 返回一个状态由给定value决定的Promise对象。如果该值是thenable(即，带有then方法的对象)，返回的Promise对象的最终状态由then方法执行决定；否则的话(该value为空，基本类型或者不带then方法的对象),返回的Promise对象状态为fulfilled，并且将该value传递给对应的then方法。通常而言，如果你不知道一个值是否是Promise对象，使用Promise.resolve(value) 来返回一个Promise对象,这样就能将该value以Promise对象形式使用。
+
+
 
 
 
 ### Function 
 
 > [Function |mdn](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function)
+
+* 普通的函数也是object，可以设置属性（值，引用）
+
+```
+function a() {
+
+}
+a.func =(){}
+a.v = 1
+```
 
 
 
@@ -315,12 +521,6 @@ for(let i=0;i<arr.length ; i++){console.log(i, arr[i])}
 * filter 可用于清除数组里 这些值
 * for () 会按照我们的设置,  遍历完所有值
 
-
-
-
-
-
-
 * [concat()](https://www.runoob.com/jsref/jsref-concat-array.html)
 
   > ```js
@@ -390,7 +590,35 @@ for(let i=0;i<arr.length ; i++){console.log(i, arr[i])}
 
 * [find()](https://www.runoob.com/jsref/jsref-find.html)
 
-* [flat() | MDN](https://www.baidu.com/link?url=saBnGesuk0inSI52EKDOyFZki2AIAr6JPuQrZbfQwTopuH4u9PBgUPUhwNb3WoLpoPSwvxFiAuYb5BZmQ1You1m-4oehJYHQzvcMdbz0Nh8XVCGBjiIuTVYqZoCcpd63_3G8GhCex5XEwHKJINKu6_&wd=&eqid=e4ca32cd00076d9f000000055e91d2ed)
+* [flat() | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/flat)
+
+  ```js
+  var newArray = arr.flat([depth]);
+  ```
+
+  * depth 默认值 1
+  * examples
+
+  ```js
+  var arr1 = [1, 2, [3, 4]];
+  arr1.flat(); 
+  // [1, 2, 3, 4]
+  
+  var arr2 = [1, 2, [3, 4, [5, 6]]];
+  arr2.flat();
+  // [1, 2, 3, 4, [5, 6]]
+  
+  var arr3 = [1, 2, [3, 4, [5, 6]]];
+  arr3.flat(2);
+  // [1, 2, 3, 4, 5, 6]
+  
+  //使用 Infinity，可展开任意深度的嵌套数组
+  var arr4 = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];
+  arr4.flat(Infinity);
+  // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  ```
+
+  
 
 * [findIndex()](https://www.runoob.com/jsref/jsref-findindex.html)
 
@@ -427,7 +655,34 @@ for(let i=0;i<arr.length ; i++){console.log(i, arr[i])}
 
 * [push()](https://www.runoob.com/jsref/jsref-push.html)
 
+  * 语法
+
+    ```js
+    array.push(item1, item2, ..., itemX)
+    // 新数组长度 
+    ```
+
+    
+
 * [reduce()](https://www.runoob.com/jsref/jsref-reduce.html)
+
+  > 从左往右
+
+  * 语法
+
+    ```js
+    array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
+    ```
+
+    * 返回计算结果
+    * Example
+
+    ```js
+    [1,2,3,4].reduce((a,b) => a+b)
+    // 10
+    ```
+
+    
 
 * [reduceRight()](https://www.runoob.com/jsref/jsref-reduceright.html)
 
@@ -659,6 +914,10 @@ Number.isInteger(NaN)
 
 * [concat()](https://www.w3school.com.cn/jsref/jsref_concat_string.asp)
 
+  ```js
+  stringObject.concat(stringX,stringX,...,stringX)
+  ```
+
 * [fromCharCode()](https://www.w3school.com.cn/jsref/jsref_fromCharCode.asp)
 
 * [indexOf()](https://www.w3school.com.cn/jsref/jsref_indexOf.asp)
@@ -674,6 +933,22 @@ Number.isInteger(NaN)
   > [match() | mdn](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/match)
 
 * [replace()](https://www.w3school.com.cn/jsref/jsref_replace.asp)
+
+  * 语法
+
+  ```js
+  stringObject.replace(regexp/substr,replacement)
+  ```
+
+  * replacement
+
+  | 字符             | 替换文本                                            |
+  | :--------------- | :-------------------------------------------------- |
+  | $1、$2、...、$99 | 与 regexp 中的第 1 到第 99 个子表达式相匹配的文本。 |
+  | $&               | 与 regexp 相匹配的子串。                            |
+  | $`               | 位于匹配子串左侧的文本。                            |
+  | $'               | 位于匹配子串右侧的文本。                            |
+  | $$               | 直接量符号。                                        |
 
 * [search()](https://www.w3school.com.cn/jsref/jsref_search.asp)
 

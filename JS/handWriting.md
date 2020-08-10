@@ -2,6 +2,333 @@
 
 
 
+## mySetInterval
+
+* 在间隔 a, a+b, a+2b, ... ..., a+n*b后执行函数， stop函数可以停止该定时器
+
+```js
+function mySetInterVal(fn, a, b) {
+  this.a = a;
+  this.b = b;
+  this.n = 0;
+  this.handle = null;
+  this.start = function () {
+    this.handle = setTimeout(() => {
+      console.log(this.a + this.n * this.b);
+      fn();
+      this.start();
+      this.n++;
+    }, this.a + this.n * this.b);
+  };
+  this.stop = function () {s
+    this.handle && clearTimeout(this.handle);
+    this.n = 0;
+  };
+}
+```
+
+
+
+
+
+## thousandth 千分位
+
+* [5种方式将数字转成千分位 | good](https://www.cnblogs.com/wangmeijian/p/4163936.html)
+
+* 
+
+```js
+function thousandth(str) {
+  return str.replace(/\d{1,3}(?=(\d{3})$)/g, function (s) {
+    return s + ",";
+  });
+}
+```
+
+* 
+
+```js
+function thousandth(str) {
+  return str.replace(/\d(?=(?:\d{3})+(?:\.\d+|$))/g, "$&,");
+}
+```
+
+
+
+
+
+## limitRunTasks() 
+
+* 
+
+```js
+function limitRunTask(tasks, n) {
+  return new Promise((resolve) => {
+    const res = [];
+    let taskIndex = 0;
+    for (let i = 0; i < n; i++) {
+      let curI = taskIndex;
+      if (!tasks[curI]) {
+        next();
+      }
+      tasks[curI].then((val) => {
+        res[curI] = val;
+        next();
+      });
+      taskIndex++;
+    }
+    function next() {
+      if (taskIndex >= taskIndex.length) {
+        resolve(res);
+      } else {
+        tasks[taskIndex].then((val) => {
+          res[taskIndex] = val;
+          taskIndex++;
+        });
+      }
+    }
+  });
+}
+
+```
+
+* 
+
+```js
+function limitRunTask(tasks, n) {
+  return new Promise((resolve, reject) => {
+    let index = 0, finish = 0, start = 0, res = [];
+    function run() {
+      if (finish == tasks.length) {
+        resolve(res);
+        return;
+      }
+      while (start < n && index < tasks.length) {
+        // 每一阶段的任务数量++
+        start++;
+        let cur = index;
+        tasks[index++]().then(v => {
+          start--;
+          finish++;
+          res[cur] = v;
+          run();
+        });
+      }
+    }
+    run();
+  })
+  // 大概解释一下：首先如何限制最大数量n
+  // while 循环start < n，然后就是then的回调
+}
+```
+
+
+
+## Object.create()
+
+
+
+
+
+## trim
+
+* 
+
+```js
+String.prototype.trim = function () {
+  return this.match(/\s+(.*?)\s+$/)[1];
+};
+```
+
+* 
+
+```js
+String.prototype.trim = function(){
+    return this.replace(/^\s+|\s+$/g, '')
+}
+```
+
+
+
+
+
+## ajax
+
+```js
+function ajax(url) {
+  const request = new XMLHttpRequest();
+  request.open("GET", url, true);
+  request.onreadystatechange = function () {
+    if (request.readyState === 4 && request.status === 200) {
+      console.log(request.response);
+    }
+  };
+  request.send();
+}
+```
+
+
+
+
+
+## Promise.all
+
+```js
+Promise.prototype.all = function (arr) {
+  return new Promise((resolve, reject) => {
+    if (arr || arr.length < 1) {
+      return [];
+    }
+    const result = new Array(arr.length);
+    let count = 0;
+    for (let i = 0; i < arr.length; i++) {
+      if (!(arr[i] instanceof Promise)) {
+        // 非 Promise
+        result[i] = arr[i];
+        if (++count === arr.length) {
+          resolve(result);
+        }
+      } else {
+        // Promise
+        arr[i]
+          .then((val) => {
+            result[i] = val;
+            if (++count === arr.length) {
+              resolve(result);
+            }
+          })
+          .catch((err) => {
+            reject(err);
+          });
+      }
+    }
+  });
+};
+```
+
+## Promise.race
+
+```js
+Promise.prototype.race = function (arr) {
+  return new Promise((resolve, reject) => {
+    for (let i = 0; i < arr.length; i++) {
+      if (!(arr[i] instanceof Promise)) {
+        resolve(arr[i]);
+      } else {
+        // Promise
+        arr[i].then(resolve, reject);
+      }
+    }
+  });
+};
+```
+
+s
+
+## sleep
+
+> 使用Promise封装
+
+```js
+const sleep = function (func, time) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(func);
+    }, time);
+  });
+};
+```
+
+
+
+
+
+## reduce
+
+```js
+Array.prototype.reduce = function (func, initVal) {
+  const array = this;
+  let total = array[0],
+    i = 1;
+  if (initVal !== undefined) {
+    total = initVal;
+    i = 0;
+  }
+  for (; i < array.length; i++) {
+    total = func(total, array[i], i, array);
+  }
+  return total;
+};
+```
+
+
+
+
+
+## 对象类型的判断
+
+* 利用Object.prototype.toString.call() 
+* "[object Array]", "[object Object]","[object Function]","[object Symbol]","[object Null]"
+
+```js
+const isType = (type) => (obj) =>
+  Object.prototype.toString.call(obj).toLowerCase() ===
+  `[object ${type}]`.toLowerCase();
+```
+
+
+
+
+
+## add(1,3)(2)(3).sumOf()
+
+> 递归 + function设置sumOf属性， 闭包nums存储
+
+```js
+function add(...args) {
+  const nums = [...args];
+  // 放入数字
+  function push(...args) {
+    nums.push(...args);
+    //
+    return push;
+  }
+  // fuction 也是object, 设置sumOf属性
+  push.sumOf = () => {
+    console.log(nums);
+    return nums.reduce((a, b) => a + b);
+  };
+  return push;
+}
+```
+
+
+
+## 事件委托
+
+```js
+// 绑定外层元素，来代理监听内部事件， e.target
+// 事件委托
+function delegate(element, eventType, selector, fn) {
+  element.addEventListner(eventType, (e) => {
+    let el = e.target;
+
+    while (!el.match(selector)) {
+      if (el === element) {
+        el === null;
+        break;
+      }
+      el = el.parentNode;
+    }
+    // addEvenlister(func(event, el){})
+    return fn.call(el, e, el);
+  });
+}
+
+```
+
+
+
 ## New 
 
 * 箭头函数会捕获其`所在上下文`的 `this` 值，作为自己的 `this` 值
@@ -25,7 +352,7 @@
       // obj.__proto__.__proto__ = ctor.prototype
       // 中间隔一个原型， 相当于ctor子类，使得obj原型扩展内容时，不会污染到ctor.prototype
       obj.__proto__ = Object.create(ctor.prototype);
-      let res = ctor.apply(obj, ...args);
+      let res = ctor.call(obj, ...args);
       
       let isObject = typeof res === 'object' && typeof res !== null;
       let isFunction = typoof res === 'function';
@@ -36,6 +363,8 @@
   
 
 ## bind
+
+> 它并不是立马执行函数，而是有一个延迟执行的操作
 
 * 手写bind
 
@@ -138,15 +467,69 @@ function shallowClone(target) {
 
 ## deepClone
 
-```js
-// deepClone 深拷贝
+* WeakMap 解决有环，实现了Function 复制
 
-function shallowClone(target) {
+```js
+const deepClone = (target, weakMap) => {
+  if (isObject(target)) {
+    if (!weakMap) {
+      weakMap = new WeakMap();
+    }
+    if (weakMap.get(target)) {
+      return target;
+    } else {
+      weakMap.set(target, true);
+    }
+    const cloneTarget =
+      typeof target === "function"
+        ? eval(target.toString())
+        : target.constructor();
+    for (let k in target) {
+      if (target.hasOwnProperty(k)) {
+        cloneTarget[k] = deepClone(target[k], weakMap);
+      }
+    }
+    return cloneTarget;
+  } else {
+    return target;
+  }
+};
+```
+
+* 所有值类型，引用类型：可复制function, {}, array
+
+```js
+const deepClone = (target) => {
+  if (
+    (typeof target === "object" && target !== null) ||
+    typeof target === "function"
+  ) {
+    const cloneTarget =
+      typeof target === "function"
+        ? eval(target.toString())
+        : target.constructor();
+
+    for (let k in target) {
+      if (target.hasOwnProperty(k)) {
+        cloneTarget[k] = deepClone(target[k]);
+      }
+    }
+    return cloneTarget;
+  } else {
+    return target;
+  }
+};
+```
+
+* 
+
+```js
+function deepClone(target) {
 	if(typeof target === 'object' && target !== null) {
 		const cloneTarget = Array.isArray(target)? [] : {}
 		for(let prop in target) {
 			if(target.hasOwnProperty(prop)) {
-				cloneTarget[prop] = target[prop]
+				cloneTarget[prop] = deepClone(target[prop])
 			}
 		}
 		return cloneTarget
@@ -154,12 +537,17 @@ function shallowClone(target) {
 		return target
 	}
 }
+```
 
+* 利用WeakMap解决有环, 但无法复制function
+
+```js
 // deepClone 2
 
 const isObject = (target) => (typeof target === 'object' || typeof target === 'function') && target !== null
 
 const deepClone = (target, map = new WeakMap()) => {
+  // 解决有环
 	if(map.get(target)) 
 		return target
 
@@ -180,7 +568,11 @@ const a = {val:2}
 a.target = a
 let newA = deepClone(a, new WeakMap())
 console.log(newA)
+```
 
+* 
+
+```js
 // deepClone 3
 
 const getType = (data) => { // 获取数据类型
@@ -221,8 +613,9 @@ const deepClone = data => {
     };
 	return baseClone(data);
 };
-
 ```
+
+
 
 ## debounce
 
@@ -326,6 +719,27 @@ function throttle3(func, delay) {
 ```
 
 ## instanceOf
+
+* 
+
+```js
+const myInstanceof = (objA, objB) => {
+  if (objA && objB) {
+    let proto = objA.__proto__;
+    let prototype = objB.prototype;
+    while (proto) {
+      if (proto === prototype) {
+        return true;
+      }
+      proto = proto.__proto__;
+    }
+  }
+  return false;
+};
+
+```
+
+* 
 
 ```js
 function instanceOf(left, right) {
