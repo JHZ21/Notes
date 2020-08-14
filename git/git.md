@@ -2,6 +2,35 @@
 
 
 
+## reset &  revert
+
+* [Git恢复之前版本的两种方法reset、revert（图文详解）](https://blog.csdn.net/yxlshk/article/details/79944535)
+* reset
+
+> reset的作用是修改HEAD的位置，即将HEAD指向的位置改变为之前存在的某个版本。
+>
+> 恢复到之前某个提交的版本，但那个版本之后提交的版本就看不见了（若记住id,可以找回）
+
+```git
+git reset --hard 目标版本号
+```
+
+
+
+* revert
+
+> 反做：撤销之前的某一版本的改动，但保留该目标版本后面的版本及其改动
+
+```git
+git revert -n 版本号
+```
+
+
+
+
+
+
+
 ## 编辑config文件
 
 ```git
@@ -416,12 +445,14 @@ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Crese
 * config 文件
 
 ```
-   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+ lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
         st = status
         aa = add .
         ps = push
         pl = pull
         br = branch -v
         co = checkout
+        ce = config --global --edit
+        am = commit -am
 ```
 
