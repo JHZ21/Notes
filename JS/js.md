@@ -1267,7 +1267,7 @@ preventDefault
 
 
 
-### insertBefore
+### insertBefore()
 
 > [HTML DOM insertBefore | 菜鸟教程](https://www.baidu.com/link?url=eD4WRl0pALO_35KnqANfUKg9Kf1HeG0qJ5yQPv21Q8dE3OjDj33SC_n9Gd4_KMCjnK1i3SMGPFyQDOAlPyAFooqNYNxONkapZO_lycyN64u&wd=&eqid=fc9be1140004ba56000000055e9dbb5b)
 >
@@ -1309,7 +1309,7 @@ preventDefault
 
 
 
-### cloneNode
+### cloneNode()
 
 ```js
 var dupNode = node.cloneNode(deep)
@@ -1319,6 +1319,24 @@ false: 只克隆本节点，舍弃后代节点
 ```
 
 
+
+### getBoundingClientRect()
+
+> 方法返回元素的大小及其相对于**视口**的位置。
+>
+> [Element.getBoundingClientRect() | mdn](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect)
+
+* 语法
+
+```js
+rectObject = object.getBoundingClientRect();
+```
+
+```js
+var boxPosition = document.getElementById('box');     // 获取元素
+const top = box.getBoundingClientRect().top;     // 元素上边距离页面上边的距离
+const right = box.getBoundingClientRect().right;    // 元素右边距离页面左边的距离
+```
 
 
 

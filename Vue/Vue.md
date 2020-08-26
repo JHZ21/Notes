@@ -1,10 +1,11 @@
 # Vue 2.x
 
-* [Vue.js 源码揭秘](https://ustbhuangyi.github.io/vue-analysis/)
+* [Vue.js 源码揭秘 ｜ 失效](https://ustbhuangyi.github.io/vue-analysis/)
 
 * [30 道 Vue 面试题，内含详细讲解（涵盖入门到精通，自测 Vue 掌握程度）| 掘金](https://juejin.im/post/5d59f2a451882549be53b170)
 
-
+* [vue的双向绑定原理及实现 ｜ good](https://www.cnblogs.com/chenhuichao/p/10818396.html)
+* 
 
 ## v-bind
 

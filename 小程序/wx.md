@@ -2,15 +2,118 @@
 
 
 
+## rpx 单位
+
+> rpx（responsive pixel）: 可以根据屏幕宽度进行自适应。规定屏幕宽为750rpx。如在 iPhone6 上，屏幕宽度为375px，共有750个物理像素，则750rpx = 375px = 750物理像素，1rpx = 0.5px = 1物理像素。
+
+
+
+## 组件之间样式影响
+
+### options.styleIsolation
+
+> 设置自身组件的样式影响规则
+
+* isolated  默认值
+
+> class样式只由自身组件决定， 且自定义组件内外，使用 class 指定的样式将不会相互影响
+
+* apply-shared
+
+> 只有 **页面 wxss** 样式和设置了shared的组件 将影响到自身组件, 而自定义组件 wxss 样式不会影响页面
+>
+> * 
+
+
+
+* shared 
+
+> **页面 wxss**  样式会影响到自身组件。
+>
+> **自身组件 wxss** 中指定的样式也会影响页面和其他设置了 **apply-shared**  或 **shared** 的自定义组件。（这个选项在插件中不可用）
+>
+> 并可覆盖父组件样式。
+
+* 页面 page 默认 shared
+
+
+
+### externalClasses
+
+> 组件可以接受外部传入的样式类
+
+```js
+externalClasses: ['my-class']
+```
+
+
+
+## event  bind & trigger
+
+* Bind:  tap 事件 与 onTap 函数
+
+```html
+<!-- 在自定义组件中 -->
+<button bindtap="onTap">点击这个按钮将触发“myevent”事件</button>
+```
+
+*  函数 与 triggerEvent
+
+```js
+ methods: {
+    onTap: function(){
+      var myEventDetail = {} // detail对象，提供给事件监听函数
+      var myEventOption = {} // 触发事件的选项
+      this.triggerEvent('myevent', myEventDetail, myEventOption)
+    }
+```
+
+* eventOption
+
+| 选项名       | 类型    | 是否必填 | 默认值 | 描述                                                         |
+| :----------- | :------ | :------- | :----- | :----------------------------------------------------------- |
+| bubbles      | Boolean | 否       | false  | 事件是否冒泡                                                 |
+| composed     | Boolean | 否       | false  | 事件是否可以穿越组件边界，为false时，事件将只能在引用组件的节点树上触发，不进入其他任何组件内部 |
+| capturePhase | Boolean | 否       | false  | 事件是否拥有捕获阶段                                         |
+
+
+
+## selectComponent
+
+* 参数：一个匹配选择器 `selector`
+
+```js
+this.selectComponent(".my-component")
+```
+
+* 自定义设置 组件的 selectComponet 返回值
+
+
+
+
+
 ## 生命周期
 
-> js文件中定义了一些页面生命周期函数，下面简述下这些生命周期函数的方法作用
+> 组件自身的一些函数, 在特殊的时间点或遇到一些特殊的框架事件时被自动触发。
 
-* onLoad：首次进入页面加载时触发，可以在 onLoad 的参数中获取打开当前页面路径中的参数。
-*  onShow：加载完成后、后台切到前台或 重新进入页面时触发
-*  onReady：页面首次渲染完成时触发
-*  onHide：从前台切到后台或进入其他页面触发
-*  onUnload：页面卸载时触发
+### lifetimes
+
+| 生命周期 | 参数           | 描述                                     |
+| :------- | :------------- | :--------------------------------------- |
+| created  | 无             | 在组件实例刚刚被创建时执行               |
+| attached | 无             | 在组件实例进入页面节点树时执行           |
+| ready    | 无             | 在组件在视图层布局完成后执行             |
+| moved    | 无             | 在组件实例被移动到节点树另一个位置时执行 |
+| detached | 无             | 在组件实例被从页面节点树移除时执行       |
+| error    | `Object Error` | 每当组件方法抛出错误时执行               |
+
+### pageLifetimes
+
+| 生命周期 | 参数        | 描述                         |
+| :------- | :---------- | :--------------------------- |
+| show     | 无          | 组件所在的页面被展示时执行   |
+| hide     | 无          | 组件所在的页面被隐藏时执行   |
+| resize   | object Size | 组件所在的页面尺寸变化时执行 |
 
 
 

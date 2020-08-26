@@ -355,6 +355,14 @@ git remote -v
 
 
 
+### 查看远程分支
+
+```git
+git remote show origin 
+```
+
+
+
 ### clone:  克隆
 
 ```
@@ -372,10 +380,28 @@ git checkout -b dev origin/dev
 
 
 
-### 建立连接关系
+### 建立分支连接关系
 
+* 设置当前分支的upstream为origin远程仓库的dev分支
+
+```git
+git branch --set-upstream-to=origin/dev 
 ```
-git branch --set-upstream-to=origin/dev dev
+
+```git
+git branch -u origin/dev
+```
+
+* 不切换分支直接设置其他分支的upstream
+
+```git
+git br -u origin/br01-remote br01
+```
+
+* 在推送的同时，同时设置upstream
+
+```git
+git push -u origin master
 ```
 
 
@@ -385,6 +411,12 @@ git branch --set-upstream-to=origin/dev dev
 ```
 git pull
 ```
+
+```
+git pull origin master
+```
+
+
 
 > 与远程库，进行合并，若冲突部分，再进行修改提交
 >

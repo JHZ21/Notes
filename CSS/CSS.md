@@ -2,6 +2,45 @@
 
 
 
+## flex
+
+* flex: 1;
+
+  > flex-grow: 1; flex-shrink: 1;flex-basis: 0%;
+  >
+  > 实现平均分配空间
+
+* flex: 1 1 auto;
+
+  > 根据原来自身大小，按比例分配空间
+
+* flex: 0;
+
+  > flex-grow: 0; flex-shrink: 1; flex-basis: 0%;
+
+
+
+## block, inline 元素的width, height, padding, margin
+
+* block 
+
+  * width, height, padding, margin  皆有效
+  * width 默认 100%
+
+* inline
+
+  * width, height 无效，
+
+  * **padding-left, padding-right 有效**
+
+    padding-top, padding-bottom **空间布局上无效**，但**背景面积**会受到影响
+
+  * **margin-left, margin-right 有效**
+
+    margin-top, margin-bottom 无效
+
+
+
 ## border-radius
 
 > border-radius的数值超块方形的边长时，圆形大小不变了？
