@@ -2,6 +2,15 @@
 
 
 
+## 回退到上个编辑位置
+
+- 简答：
+
+- - Windows：（好像是）**Alt + ←**
+  - Mac：**Control + -**
+
+
+
 ## Extensions
 
 

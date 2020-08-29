@@ -196,7 +196,7 @@ a.hasOwnProperty('b')
 
 
 
-### Object.create
+### Object.create()
 
 * [Object.create() | mdn](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create)
 * 语法
@@ -210,7 +210,52 @@ Object.create(proto[, propertiesObject])
 
 
 
-### Object.assign
+### Object.keys()
+
+> 一个表示给定对象自身的所有可枚举属性的字符串数组。
+
+* [Object.keys() |mdn](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/keys)
+* 语法
+
+```js
+Object.keys(obj)
+```
+
+* examples
+
+```js
+let obj ={ a:1, b:[2,3], 1:1}
+Object.keys(obj)
+// ["1", "a", "b"]
+```
+
+
+
+### Object.values()
+
+> 一个包含对象自身的所有可枚举属性值的数组
+
+* [Object.values() | mdn](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/values)
+
+
+
+* 语法
+
+```
+Object.values(obj)
+```
+
+* examples
+
+```js
+let obj ={ a:1, b:[2,3], 1:1}
+Object.values(obj)
+// [1, 1, [2,3]]
+```
+
+
+
+### Object.assign()
 
 * [`Object.assign()| MDN`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
 
@@ -222,7 +267,7 @@ Object.create(proto[, propertiesObject])
 
 
 
-### Object.defineProperty
+### Object.defineProperty()
 
 * [Object.defineProperty()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
 
@@ -647,6 +692,23 @@ for(let i=0;i<arr.length ; i++){console.log(i, arr[i])}
 
 * [keys()](https://www.runoob.com/jsref/jsref-keys.html)
 
+```js
+array.keys()
+```
+
+```js
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+var keys = fruits.keys();
+// Array Iterator {}
+keys.next()
+// {value: 0, done: false}
+keys.next()
+// {value: 1, done: false}
+... ...
+```
+
+
+
 * [lastIndexOf()](https://www.runoob.com/jsref/jsref-lastindexof-array.html)
 
 * [map()](https://www.runoob.com/jsref/jsref-map.html)
@@ -863,6 +925,16 @@ Math.floor(-0.000001)
 ### Number.toFixed()
 
 > 可把 Number 四舍五入为指定小数位数的数字
+
+* [Number.prototype.toFixed() | smdn](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed)
+
+* 语法
+
+```js
+numObj.toFixed(digits)
+```
+
+
 
 
 
@@ -1264,6 +1336,14 @@ preventDefault
 >[DOM Element](https://www.w3school.com.cn/jsref/dom_obj_all.asp)
 >
 >元素也可以拥有属性。属性是属性节点（参见下一节）。
+
+
+
+### appendChild()
+
+> [Node.appendChild() | mdn](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild)
+
+* 移动性（从原来父节点那剪切）
 
 
 

@@ -1,5 +1,9 @@
 # 手撕代码
 
+* [JS 高级之手写一个Promise,Generator,async和 await【近 1W字】| 牛](https://www.lagou.com/lgeduarticle/82179.html)
+
+
+
 
 
 ## mySetInterval
