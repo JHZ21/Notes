@@ -4,8 +4,32 @@
 
 * [30 道 Vue 面试题，内含详细讲解（涵盖入门到精通，自测 Vue 掌握程度）| 掘金](https://juejin.im/post/5d59f2a451882549be53b170)
 
+* 
+
+
+
+## diff  原理
+
+* [详解vue的diff算法](https://www.cnblogs.com/wind-lanyan/p/9061684.html)
+
+* 同层级比较
+
+> 在采取diff算法比较新旧节点的时候，比较只会在同层级进行, 不会跨层级比较(不会比较children)
+
+* 预判
+
+> 首尾双指针比较
+>
+> `oldCh`和`vCh`各有两个头尾的变量`StartIdx`和`EndIdx`，它们的2个变量相互比较，一共有4种比较方式。如果4种比较都没匹配，如果设置了`key`，就会用`key`进行比较，在比较的过程中，变量会往中间靠，一旦`StartIdx>EndIdx`表明`oldCh`和`vCh`至少有一个已经遍历完了，就会结束比较。
+
+
+
+## 双向绑定原理与实现
+
 * [vue的双向绑定原理及实现 ｜ good](https://www.cnblogs.com/chenhuichao/p/10818396.html)
 * 
+
+
 
 ## v-bind
 

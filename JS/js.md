@@ -1080,7 +1080,66 @@ Number.isInteger(NaN)
 ## RegExp
 
 * [compile](https://www.w3school.com.cn/jsref/jsref_regexp_compile.asp)
+
 * [exec](https://www.w3school.com.cn/jsref/jsref_exec_regexp.asp)
+
+  * 语法
+
+  ```js
+  RegExpObject.exec(string)
+  ```
+
+  * return value
+
+  > 未匹配到：null
+  >
+  > 匹配到： 数组 arr
+  >
+  > arr = [ 
+  >
+  > "与正则表达式相匹配的文本", 
+  >
+  > "与 reg 第 1 个子表达式相匹配的文本(最后一个匹配到的)（如果有的话)",
+  >
+  > ... ... 
+  >
+  > "与 reg 第 n 个子表达式相匹配的文本(最后一个匹配到的)（如果有的话)",
+  >
+  > ]
+  >
+  > arr.index:  匹配文本的第一个字符的位置,
+  >
+  > arr.input:  被检索的字符串 string,
+
+  * 全局 (g) 正则表达式时  (并作为变量，被复用)
+
+  > 若匹配后，RegExpObject 的 lastIndex 属性设置为匹配文本的最后一个字符的下一个位置
+  >
+  > 当 exec() 再也找不到匹配的文本时，它将返回 null，并把 lastIndex 属性重置为 0
+
+  * examples
+
+  ```js
+  /(\d)/.exec('12aw')
+  // ["1", "1", index: 0, input: "12aw", groups: undefined]
+  
+  reg = new RegExp(/(\d)/,'g')
+  reg.exec("12as12")
+  // ["1", "1", index: 0, input: "12as12", groups: undefined]
+  reg.exec("12as12")
+  // ["2", "2", index: 1, input: "12as12", groups: undefined]
+  ... ...
+  reg.exec("12as12")
+  null
+  reg.exec("12as12")
+  // ["1", "1", index: 0, input: "12as12", groups: undefined]
+  ... ...
+  ```
+
+  
+
+
+
 * [test](https://www.w3school.com.cn/jsref/jsref_test_regexp.asp)
 
 
@@ -1336,6 +1395,27 @@ preventDefault
 >[DOM Element](https://www.w3school.com.cn/jsref/dom_obj_all.asp)
 >
 >元素也可以拥有属性。属性是属性节点（参见下一节）。
+
+
+
+
+
+### addEventListener
+
+> [addEventListener | runoob](https://www.runoob.com/jsref/met-element-addeventlistener.html)
+
+* 语法
+
+```js
+element.addEventListener(event, function, useCapture = false)
+```
+
+* 参数
+  * event  事件名
+  * function 
+  * useCapture, true: 在捕获阶段执行， false: 在冒泡阶段执行
+
+
 
 
 
