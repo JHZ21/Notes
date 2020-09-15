@@ -2,10 +2,38 @@
 
 
 
+
+
+##   submodule 
+
+*  submodule update --init
+
+> 初始拉去子项目
+
+```
+git submodule update --init
+```
+
+
+
+* submodule update
+
+> 更新子模块的到对应分支
+
+```git
+ git submodule update
+```
+
+
+
+
+
 ## reset &  revert
 
 * [Git恢复之前版本的两种方法reset、revert（图文详解）](https://blog.csdn.net/yxlshk/article/details/79944535)
-* reset
+* 
+
+### reset
 
 > reset的作用是修改HEAD的位置，即将HEAD指向的位置改变为之前存在的某个版本。
 >
@@ -17,12 +45,26 @@ git reset --hard 目标版本号
 
 
 
-* revert
+### revert
 
 > 反做：撤销之前的某一版本的改动，但保留该目标版本后面的版本及其改动
 
 ```git
 git revert -n 版本号
+```
+
+### revert  merge 操作
+
+> revert的那个commit是一个merge commit，它有两个parent, Git不知道base是选哪个parent，就没法diff，所以就抱怨了，所以你要显示告诉Git用哪一个parent。
+
+* [git 如何撤销merge 操作](https://www.jianshu.com/p/6d1d9871ced0)
+
+```
+// 显示具体合并分支信息
+git show 100047dcc
+
+git revert 100047dcc -m 1   (-m 后接保留的第几个分支？) 
+// 一般来说，如果你在master上 merge zhc_branch, 那么parent 1就是master，parent 2就是zhc_branch.
 ```
 
 
@@ -406,6 +448,21 @@ git push -u origin master
 
 
 
+### 切换远程已有分支
+
+* [git 切换远程已有分支](https://www.cnblogs.com/fairymiao/p/11344914.html)
+
+````
+// 本地分支a，且没有分支b，想要切换到远程以后分支b
+1. git remote update origin --prune 更新本地分支列表与远程一致
+2. git branch 查看本地所有分支，是否已经更新出分支b
+3. git checkout b 切换到分支b
+4. git merge a 合并分支a到当前分支b上，该解决冲突的解决冲突
+5. git push 更新到远程 （如果有需要的话）
+````
+
+
+
 ###  pull:  拉取合并
 
 ```
@@ -439,6 +496,12 @@ git push origin dev
 
   >  -u  ：可以将本地分支和远程的分支关联起来，
   > 简化推送或者拉取的命令
+
+* -f 强制推送
+
+```git
+git push -f
+```
 
 
 

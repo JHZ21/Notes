@@ -9,6 +9,39 @@
 
 
 
+## ?? 
+
+> ?? 和 || 很像
+>
+> 只是屏蔽掉 null, undefined
+>
+> 不会屏蔽掉 false, 0, NaN, '' 
+>
+> * [js 中的 ?? 是什么？| 简书](https://www.jianshu.com/p/77b8c7311aa9)
+
+```js
+null || 1
+// 1
+null ?? 1
+// 1
+undefined || 1
+// 1
+undefined ?? 1
+// 1
+false || 1
+// 1
+false ?? 1
+// false
+0 || 1
+// 1
+0 ?? 1
+// 0
+```
+
+
+
+
+
 ## setTimeout
 
 * [setTimetou | ronoob](https://www.runoob.com/jsref/met-win-settimeout.html)
@@ -773,6 +806,12 @@ keys.next()
 * [some()](https://www.runoob.com/jsref/jsref-some.html)
 
 * [sort()](https://www.runoob.com/jsref/jsref-sort.html)
+
+```js
+array.sort(sortfunction)
+```
+
+>  这种方法会改变原始数组！
 
 * [splice()](https://www.runoob.com/jsref/jsref-splice.html)
 

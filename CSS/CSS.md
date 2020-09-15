@@ -2,6 +2,14 @@
 
 
 
+## 背景与背景图片
+
+* [背景与背景图片覆盖范围](https://www.cnblogs.com/cbza/p/7206444.html?utm_source=itdadao&utm_medium=referral)
+* Background-color : border+ padding +  width
+* Background-image:  padding + width
+
+
+
 ## flex
 
 * flex: 1;
