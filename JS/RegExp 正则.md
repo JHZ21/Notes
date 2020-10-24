@@ -8,6 +8,18 @@
 
 * [闯关学正则｜编程胶囊](https://www.codejiaonang.com/#/courses)
 
+### thousandth 千分位
+
+```js
+function thousandth(str) {
+  return str.replace(/\d{1,3}(?=(\d{3})+$)/g, "$&,");
+}
+```
+
+
+
+
+
 
 
 ## replace

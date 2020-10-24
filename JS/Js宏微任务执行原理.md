@@ -12,6 +12,12 @@
 
 
 
+[微任务、宏任务、同步、异步、Promise、Async、await](https://www.cnblogs.com/jiangyuzhen/p/11064408.html)
+
+
+
+
+
 * 微任务执行时，产生新的微任务，会投入队列，并按序执行它
 * 主程序执行一遍，执行**全部**微任务，执行**一个**宏任务，执行全部微任务，执行一个宏任务
 
@@ -26,7 +32,11 @@
 | setImmediate          | x      | √    |
 | requestAnimationFrame | √      | x    |
 
- 
+* 异步请求
+* UI rendering
+* 事件绑定 addEventListener
+
+
 
 ### **微任务**
 
@@ -35,6 +45,32 @@
 | process.nextTick           | x      | √    |
 | MutationObserver           | √      | x    |
 | Promise.then catch finally | √      | √    |
+
+### async await
+
+> 旦遇到await 就立刻让出线程,阻塞后面的代码
+>
+> 等候之后,对于await来说分两种情况
+
+
+
+* 不是promise 对象
+
+> await func();
+>
+> func 会执行, 但await 会阻塞async 函数内 后续代码,先执行async 外的同步代码,同步代码执行完毕后,在回到async内部,把promise的东西,作为await表达式的结果
+>
+> 微任务.
+
+* 是promise对象
+
+> 它等到的是一个 promise 对象，await 也会暂停async后面的代码，先执行async外面的同步代码，等着 Promise 对象 fulfilled，然后把 resolve 的参数作为 await 表达式的运算结果。
+
+
+
+### UI渲染
+
+>  **宏任务** > 微任务> UI渲染 > **宏任务** > ...
 
 
 

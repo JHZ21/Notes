@@ -10,11 +10,11 @@
 * [带你理解加密、Hash和签名](https://blog.csdn.net/lvzishen123/article/details/86141958)
 * [http状态码](http://47.98.159.95/my_blog/http/004.html#_1xx)
 * [细说浏览器输入URL后发生了什么 | winty](https://juejin.im/post/5e32449d6fb9a02fe4581907)
-
 * [谈谈 HTTPS](https://juejin.im/post/59e4c02151882578d02f4aca)
 * [HTTP协议原理详解及应用]( https://juejin.im/post/5b30dd496fb9a00e925bde2e )
-
 * [JSON Web Token 入门教程]( http://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html )
+* [💗前端需要了解的计算机网络知识， 这一篇就够了！(图文并茂，万字长文，点赞收藏哦！)](https://juejin.im/post/6844904079974465544)
+* 
 
 
 
@@ -25,6 +25,12 @@
 * [你不知道的 WebSocket | 掘金](https://juejin.im/post/5f1ef215e51d453473206df6)
 
   
+
+## http 协议特点
+
+> 简单快速、灵活、无连接、无状态
+
+
 
 
 

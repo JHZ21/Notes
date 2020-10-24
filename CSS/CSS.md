@@ -2,6 +2,47 @@
 
 
 
+## 布局模式
+
+###  圣杯布局和双飞翼布局
+
+* [两边固定中间自适应布局](https://www.cnblogs.com/moumoon/p/11001641.html)
+
+
+
+> 圣杯布局和双飞翼布局基本上是一致的，都是两边固定宽度，中间自适应的三栏布局，其中，中间栏放到文档流前面，保证先行渲染。解决方案大体相同，都是三栏全部float:left浮动，区别在于解决中间栏div的内容不被遮挡上，
+
+>  圣杯布局是中间栏在添加相对定位，并配合left和right属性，效果上表现为三栏是单独分开的（如果可以看到空隙的话），
+
+> 而双飞翼布局是在中间栏的div中嵌套一个div，内容写在嵌套的div里，然后对嵌套的div设置margin-left和margin-right，效果上表现为左右两栏在中间栏的上面，中间栏还是100%宽度，只不过中间栏的内容通过margin的值显示在中间。
+
+![](..\images\css-layout-mode.png)
+
+
+
+## BFC 
+
+> block formatting context 
+>
+> 简单来说，BFC 就是一种属性，这种属性会影响着元素的定位以及与其兄弟元素之间的相互作用。
+>
+> 中文常译为块级格式化上下文。是 W3C [CSS](https://www.2cto.com/kf/qianduan/css/) 2.1 规范中的一个概念，它决定了元素如何对其内容进行定位，以及与其他元素的关系和相互作用。 在进行盒子元素布局的时候，BFC提供了一个环境，在这个环境中按照一定规则进行布局不会影响到其它环境中的布局。
+
+* [什么是BFC?形成 BFC 的条件是什么？BFC常见作用详解](http://www.10qianwan.com/articledetail/61505.html)
+
+
+
+### 形成条件
+
+* 浮动元素, float 除 none 以外的值;
+* 绝对定位元素, position ( absolute, fixed, sticky)
+* display 为 inline-block, table-cell, table-caption, flex, inline-flex;
+* overflow 除了 visible 以外的值 ( hidden, auto, scroll )
+* 根元素或包含根元素的元素
+*  `display: flow-root` 一个新的 `display` 属性的值，它可以创建**无副作用的BFC**。在父级块中使用 可以创建新的BFC。
+
+
+
 ## 背景与背景图片
 
 * [背景与背景图片覆盖范围](https://www.cnblogs.com/cbza/p/7206444.html?utm_source=itdadao&utm_medium=referral)
@@ -110,8 +151,8 @@
 
 * 遵守就近原则  ： 内联样式表 > 内部样式表 > 外部样式表
 * id 选择器  > 类选择器 > 标签选择器
-
 * !important > 内联样式 > ID选择器 > 类选择器 = 属性选择器 = 伪类选择器 > 元素选择器 = 关系选择器(子代，后代) = 伪元素选择器 > 通配符选择器 > 继承
+* 样式代码，后来者居上，类名顺序无关。
 
 
 
@@ -222,7 +263,7 @@ to {left:200px;}
 
 ###  补充
 
-* 元素成为地位元素，其z-indoex就会自动生效，值为默认的auto
+* 元素成为定位元素，其z-indoex就会自动生效，值为默认的auto
 * 不支持z-index属性的元素,  天然是z-index: auto
 
 
@@ -322,17 +363,20 @@ transform: martix(1, 2, 3, 4, 5, 6)
 
 
 
-## postion
+## position
 
 > left、top等，百分比都根据其定位元素宽高
 
 | 值       | 描述                                                         |
 | :------- | :----------------------------------------------------------- |
-| absolute | 生成绝对定位的元素，相对于 `static` 定位以外的第一个父元素进行定位。元素的位置通过 "left", "top", "right" 以及 "bottom" 属性进行规定。 |
-| fixed    | 生成绝对定位的元素，相对于`浏览器窗口`进行定位。元素的位置通过 "left", "top", "right" 以及 "bottom" 属性进行规定。 |
+| absolute | 生成绝对定位的元素，相对于 `static` 定位以外的第一个父元素进行定位。元素的位置通过 "left", "top", "right" 以及 "bottom" 属性进行规定。 没有, 则相对html 定位 |
+| fixed    | 生成固定定位的元素，相对于`浏览器窗口`进行定位。元素的位置通过 "left", "top", "right" 以及 "bottom" 属性进行规定。 |
+| sticky   | 粘性定位; 该定位基于用户滚动的位置; 它的行为就像 position:relative; 而当页面滚动超出目标区域时，它的表现就像 position:fixed;，它会固定在目标位置。 |
 | relative | 生成相对定位的元素，相对于`其正常位置`进行定位。因此，"left:20" 会向元素的 LEFT 位置添加 20 像素。" left: 50%", 向左移动50%`父元素宽带` |
 | static   | 默认值。没有定位，元素出现在正常的流中（`忽略 `top, bottom, left, right 或者 z-index 声明）。 |
 | inherit  | 规定应该从父元素`继承` position 属性的值。                   |
+
+
 
 
 

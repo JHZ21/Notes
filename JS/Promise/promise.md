@@ -12,7 +12,39 @@
 
 ## Promise 状态
 
-* 
+* pending
+* fulfilled
+* rejected
+
+
+
+
+
+## 手撕promise
+
+```js
+// Promsie
+function Promise(exec) {
+    this.onResolvedCbs = []
+    exec(value => {
+        setTimeout(() => {
+            this.data = vaue
+       		this.onResolvedCbs.forEach(item => 
+                item(vlaue)
+            )
+        })
+    })
+}
+Promise.prototype.then = function(onResolved) {
+    return new Promise(resolve => {
+        this.onResolvedCbs.push(() => {
+            const result = onResolved(this.data)
+            result instanceOf Promise ? 
+              result.then(resolve): resolve(result)
+        })
+    })
+}
+```
 
 
 
@@ -30,6 +62,8 @@
 | 返回了一个值  | fulfilled             | 返回的值                |
 | 抛出一个错误  | rejected              | 抛出的错误              |
 | 返回了Promise | 就是返回Promise的状态 | 与返回Promise的参数一致 |
+
+
 
 ## Promise.all() 
 

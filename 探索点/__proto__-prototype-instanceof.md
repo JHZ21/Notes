@@ -51,6 +51,39 @@ Function.__proto__ === Object.prototype
 
   
 
+```js
+var A = function() {}; 
+A.prototype.n = 1; 
+var b = new A(); 
+
+A.prototype = { n: 2, m: 3 }; 
+var c = new A(); 
+
+console.log(b.n);
+// 1
+console.log(b.m); 
+//undefined
+console.log(c.n); 
+//2
+console.log(c.m);
+//3
+
+New
+Function new(func, ...args) {
+
+Const Obj = Object.create(func.prototype)
+
+Const Result = func.apply(obj, args)
+Function isFunction（）{
+
+}
+Function isObejct() {
+
+}
+return  typeof result === 'function' || (typeof result === 'object' && result !== null ?    Result : obj;
+}
+```
+
 
 
 

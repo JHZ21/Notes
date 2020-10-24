@@ -468,7 +468,47 @@ a.v = 1
 const p = new Proxy(target:object, handler:object)
 ```
 
+```js
+let products = new Proxy({
+  browsers: ['Internet Explorer', 'Netscape']
+}, {
+  get: function(obj, prop) {
+    // 附加一个属性
+    if (prop === 'latestBrowser') {
+      return obj.browsers[obj.browsers.length - 1];
+    }
 
+    // 默认行为是返回属性值
+    return obj[prop];
+  },
+  set: function(obj, prop, value) {
+    // 附加属性
+    if (prop === 'latestBrowser') {
+      obj.browsers.push(value);
+      return;
+    }
+
+    // 如果不是数组，则进行转换
+    if (typeof value === 'string') {
+      value = [value];
+    }
+
+    // 默认行为是保存属性值
+    obj[prop] = value;
+
+    // 表示成功
+    return true;
+  }
+});
+
+console.log(products.browsers); // ['Internet Explorer', 'Netscape']
+products.browsers = 'Firefox';  // 如果不小心传入了一个字符串
+console.log(products.browsers); // ['Firefox'] <- 也没问题, 得到的依旧是一个数组
+
+products.latestBrowser = 'Chrome';
+console.log(products.browsers);      // ['Firefox', 'Chrome']
+console.log(products.latestBrowser); // 'Chrome'
+```
 
 ### Set
 
@@ -829,6 +869,15 @@ array.sort(sortfunction)
 * [unshift()](https://www.runoob.com/jsref/jsref-unshift.html)
 
 * [valueOf()](https://www.runoob.com/jsref/jsref-valueof-array.html)
+
+* [map](https://www.runoob.com/jsref/jsref-map.html)
+
+```js
+array.map(function(currentValue,index,arr), thisValue)
+// thisValue:  可选。对象作为该执行回调时使用，传递给函数，用作 "this" 的值。如果省略了 thisValue，或者传入 null、undefined，那么回调函数的 this 为全局对象。
+```
+
+
 
 
 
@@ -1221,6 +1270,14 @@ preventDefault
 >
 >[Window](https://www.w3school.com.cn/jsref/dom_obj_window.asp)
 
+* onload 
+
+> 全部加载完后才执行
+
+* DOMContentLoaded
+
+> 当dom加载玩就执行,不等待所有内容加载完
+
 * Window 对象集合
 
 | 集合     | 描述                                                         |
@@ -1453,8 +1510,38 @@ element.addEventListener(event, function, useCapture = false)
   * event  事件名
   * function 
   * useCapture, true: 在捕获阶段执行， false: 在冒泡阶段执行
+  
+  
+
+### removeEventListener
+
+> removeEventListener() 方法用于移除由 addEventListener()方法添加的事件句柄。
+
+* [removeEventListener](https://www.runoob.com/jsref/met-element-removeeventlistener.html)
+
+* **注意：** 如果要移除事件句柄，addEventListener() 的执行函数必须使用**外部函数**，如下实例所示 (myFunction)。
+
+  匿名函数，类似 "document.removeEventListener("*event*", function(){ *myScript* });" 该事件是无法移除的。
+
+```js
+// 向 <div> 元素添加事件句柄
+document.getElementById("myDIV").addEventListener("mousemove", myFunction);
+
+// 移除 <div> 元素的事件句柄
+document.getElementById("myDIV").removeEventListener("mousemove", myFunction);
+```
 
 
+
+* 语法
+
+```js
+element.removeEventListener(event, function, useCapture)
+```
+
+| parameter  | description                                                  |
+| ---------- | ------------------------------------------------------------ |
+| useCapture | 可选。布尔值，指定移除事件句柄的阶段。  可能值：true - 在捕获阶段移除事件句柄; false- 默认。在冒泡阶段移除事件句柄 。 **注意:** 如果添加两次事件句柄，一次在捕获阶段，一次在冒泡阶段，你必须单独移除该事件。 |
 
 
 
@@ -1662,6 +1749,12 @@ $("#div1").mousedown(function(event){
     return false;
 });
 ```
+
+
+
+###   event.stopImmediatePropagation()
+
+> 阻止剩下的事件处理程序被执行。如果一个元素上绑定了三个事件，在其中一个事件上调用了这个方法，那其他 的两个事件将不会被执行。
 
 
 

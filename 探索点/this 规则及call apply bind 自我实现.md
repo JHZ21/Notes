@@ -9,6 +9,29 @@
 
 
 
+## 题目
+
+```javascript
+function setname(name) {
+    this.name = name
+}
+setname.prototype.printName = function() {
+    console.log(this.name)
+}
+let a = new setname("cc")
+a.name = "dd"
+a.__proto__.name = "ee"
+
+a.__proto__.printName()  // ?
+a.printName() // ?
+```
+
+**正解：** ee dd
+
+
+
+
+
 ## setTimeout this
 
 > 由 setTimeout() 调用的代码运行在与所在函数完全分离的执行环境上。这会导致，这些代码中包含的 `this` 关键字在非严格模式会指向 `window` (或全局)对象，严格模式下为 undefined，这和所期望的`this`的值是不一样的。

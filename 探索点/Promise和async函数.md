@@ -53,7 +53,7 @@ new Promise((resolve, reject)=>{
 ## async函数
 
 * ES7提供了`async`函数，使得异步操作变得更加方便。`async`函数是什么？一句话，`async`函数就是Generator函数的语法糖。
-* `async`函数返回的Promise对象，必须等到内部所有`await`命令的Promise对象执行完，才会发生状态改变。也就是说，只有`async`函数内部的异步操作执行完，才会执行`then`方法指定的回调函数。但，只要一个`await`语句后面的Promise变为`reject`，那么整个`async`函数都会中断执行。
+* `async`函数返回的**Promise**对象，必须等到内部所有`await`命令的Promise对象执行完，才会发生状态改变。也就是说，只有`async`函数内部的异步操作执行完，才会执行`then`方法指定的回调函数。但，只要一个`await`语句后面的Promise变为`reject`，那么整个`async`函数都会中断执行。
 
 
 

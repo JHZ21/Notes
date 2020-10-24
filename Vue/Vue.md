@@ -1,10 +1,39 @@
 # Vue 2.x
 
 * [Vue.js 源码揭秘 ｜ 失效](https://ustbhuangyi.github.io/vue-analysis/)
-
 * [30 道 Vue 面试题，内含详细讲解（涵盖入门到精通，自测 Vue 掌握程度）| 掘金](https://juejin.im/post/5d59f2a451882549be53b170)
+* [手撕vue源码](https://github.com/canfoo/self-vue)
+
+
+
+## $nextTick
+
+
+
+
+
+## Vue 虚拟dom (vdom)
+
+* [虚拟dom](https://www.jianshu.com/p/af0b398602bc)
+* 优势
+* 解决浏览器性能问题
+
+
+
+
+
+# Vue 使用 函数调用组件 的方法
+
+* [Vue 使用 函数调用组件 的方法](https://blog.csdn.net/dongcehao/article/details/104798097)
+
+  
 
 * 
+
+# 实现对数组的监听
+
+* [Object.defineProperty是如何实现对数组的监听](https://blog.csdn.net/lyh6665/article/details/107929324)
+* 重写`Array`的原型方法
 
 
 

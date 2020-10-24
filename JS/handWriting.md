@@ -43,9 +43,12 @@ function mySetInterVal(fn, a, b) {
 
 ```js
 function thousandth(str) {
-  return str.replace(/\d{1,3}(?=(\d{3})$)/g, function (s) {
+  return str.replace(/\d{1,3}(?=(\d{3})+$)/g, function (s) {
     return s + ",";
   });
+}
+function thousandth(str) {
+  return str.replace(/\d{1,3}(?=(\d{3})+$)/g, "$&,");
 }
 ```
 
@@ -362,8 +365,14 @@ function delegate(element, eventType, selector, fn) {
       let isFunction = typoof res === 'function';
       return isObect || isFunction ? res : obj;
   };
-  ```
+  
 
+  ```
+  
+  ```js
+  res instanceOf Object // function object 为true
+  ```
+  
   
 
 ## bind
