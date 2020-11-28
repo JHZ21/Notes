@@ -2,7 +2,19 @@
 
 
 
+## Computed
 
+* 函数
+  * 标准化函数: getter, setter
+  * 创建副作用函数runner: 对getter做了一层封装
+  * 创建computed对象并返回：该对象的getter会根据是否dirty来执行runner, 并做依赖收集，setter设置newValue
+* 特点（空间换时间的优化思想）
+  * 延迟计算：当我们访问计算属性时，才会真正运行输入的getter函数
+  * 缓存：缓存上次的计算结果value(闭包)，只有当dirty为true, 才重新计算结果value 。
+
+
+
+![vue3-computed](../images/Vue3/vue3-computed.png)
 
 ## new Proxy  & Object.defineProperty
 

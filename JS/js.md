@@ -7,6 +7,28 @@
 * [JavaScript 和 HTML DOM 参考手册 | RUNOOB](https://www.runoob.com/jsref/jsref-tutorial.html)
 * [JavaScript 参考手册 | W3school](https://www.w3school.com.cn/jsref/index.asp)
 
+## ?.
+
+* [可选链操作符 | mdn](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/%E5%8F%AF%E9%80%89%E9%93%BE)
+* 在引用为空 (null 或者 undefined) 的情况下不会引起错误，该表达式短路返回值是 `undefined`
+
+```JS
+const adventurer = {
+  name: 'Alice',
+  cat: {
+    name: 'Dinah'
+  }
+};
+
+const dogName = adventurer.dog?.name;
+console.log(dogName);
+// undefined
+console.log(adventurer.dogList?.[0]);
+// undefined
+console.log(adventurer.someNonExistentMethod?.());
+// undefined
+```
+
 
 
 ## ?? 
