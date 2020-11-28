@@ -26,6 +26,25 @@ git submodule update --init
 
 
 
+## rebase & merge
+
+### rebase 
+
+> **rebase **会把你当前分支的 commit 放到**最新**公共分支的最后面,所以叫变基
+
+**注意 : **
+
+* 不要在公共分支使用rebase
+* 本地和远端对应同一条分支,优先使用 rebase, 而不是 merge
+
+
+
+### merge
+
+> **merge** 会把公共分支和你当前的commit 合并在一起，形成一个新的 commit 提交
+
+
+
 
 
 ## reset &  revert
@@ -195,13 +214,6 @@ git log --graph --pretty=oneline --abbrev-commit
 ```
 
 
-
-## rebase
-
-```
-// 先不管这个命令
-git rebase
-```
 
 
 

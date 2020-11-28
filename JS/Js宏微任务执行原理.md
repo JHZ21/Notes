@@ -31,12 +31,16 @@
 | setInterval           | √      | √    |
 | setImmediate          | x      | √    |
 | requestAnimationFrame | √      | x    |
+| MessageChannel        | √      |      |
+| postMessage           | √      |      |
+| setImmediate          | √      |      |
 
 * 异步请求
 * UI rendering
 * 事件绑定 addEventListener
 
-
+* [MessageChannel是什么，怎么使用 | 简书](https://www.jianshu.com/p/4f07ef18b5d7)
+* 
 
 ### **微任务**
 
@@ -45,6 +49,8 @@
 | process.nextTick           | x      | √    |
 | MutationObserver           | √      | x    |
 | Promise.then catch finally | √      | √    |
+|                            |        |      |
+|                            |        |      |
 
 ### async await
 

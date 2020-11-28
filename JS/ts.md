@@ -130,3 +130,59 @@ getProperty(x, "a");
 getProperty(x, "m");  // Argument of type '"m"' is not assignable to parameter of type '"a" | "b" | "c" | "d"'.
 ```
 
+
+
+## interface
+
+* 当类实现接口时，只检查类的实例端。由于构造函数位于静态端，因此不包括在此检查中。
+* 当您创建一个扩展带有私有或受保护成员的类的接口时，该接口类型只能由该类或其子类实现
+
+
+
+## functions
+
+### this
+
+> 可以显式提供此参数。这些参数是在函数的参数列表中排在前面的**伪参数**
+
+```typescript
+let deck: Deck = {
+  suits: ["hearts", "spades", "clubs", "diamonds"],
+  cards: Array(52),
+  // NOTE: The function now explicitly specifies that its callee must be of type Deck
+  createCardPicker: function (this: Deck) {
+    return () => {
+      let pickedCard = Math.floor(Math.random() * 52);
+      let pickedSuit = Math.floor(pickedCard / 13);
+
+      return { suit: this.suits[pickedSuit], card: pickedCard % 13 };
+    };
+  },
+};
+```
+
+### overload
+
+* 查看重载列表，找到匹配项，选择此重载作为正确的重载，因此，重载要从最具体到最不具体排序。
+
+> 两个重载：一个重载一个数组对象 ，一个重载一个number
+
+```typescript
+function pickCard(x: { suit: string; card: number }[]): number;
+function pickCard(x: number): { suit: string; card: number };
+function pickCard(x: any): any {
+  // Check to see if we're working with an object/array
+  // if so, they gave us the deck and we'll pick the card
+  if (typeof x == "object") {
+    let pickedCard = Math.floor(Math.random() * x.length);
+    return pickedCard;
+  }
+  // Otherwise just let them pick the card
+  else if (typeof x == "number") {
+    let pickedSuit = Math.floor(x / 13);
+    return { suit: suits[pickedSuit], card: x % 13 };
+  }
+}
+
+```
+

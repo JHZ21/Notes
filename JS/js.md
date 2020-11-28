@@ -79,16 +79,36 @@ false ?? 1
 
 
 
-# 按位操作符
+### try catch finally 执行顺序
+
+* [try-catch-finally 在JS中的执行顺序](https://blog.csdn.net/qq_39237801/article/details/101109221)
+
+> finally 内容总会运行，即使try, catch 有return；
+>
+> return 以第一次 reuten 变量为准，普通变量，则return 不会改变，但引用变量的内容可能会被修改；
+
+
+
+## 按位操作符
+
+
 
 * [按位操作符 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators)
 
   * & (按位与)
-
   * | (按位或)
+  * 去小数部分
+
+     ```js
+  1|0 // 1
+  1.5|0 //1
+  -1|0 // -1
+  1.5|0 // -1
+     ```
+
+  
 
   * ^ (按位异或)
-
   * ~ (按位非)
 
 * 按位移动操作符
@@ -200,6 +220,30 @@ document.all
 
 
 
+
+
+### set get 访问器属性
+
+* [JavaScript 对象中的 set 和 get](https://blog.csdn.net/qq_42941302/article/details/109516914)
+
+```js
+var obj = {
+    _num = 0,
+    set num(value){	//set 方法有且仅有一个参数，不适用retrun返回内容
+        this._num = value;
+    },
+    get num(){	// get 方法不能有参数，且必须用return返回内容
+        return this._num;
+    }
+}
+```
+
+* 非成对出现时
+  * 只有 get , 表示该属性只可读，不可写
+  * 只有 set , 表示该属性只可写，不可读
+
+
+
 ### Object 的方法 
 
 
@@ -305,7 +349,7 @@ Object.values(obj)
 * [Object.defineProperty()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
 
 ```js
-Object.defineProperty(obj, prop, descriptor)
+Object.defineProperty(obj, prop:string, descriptor)
 ```
 
 * 数据描述符  和 存取描述符， 只能取其中之一，不能同时是两者
@@ -339,6 +383,16 @@ Object.defineProperty(obj, prop, descriptor)
 
       该方法接受一个参数（也就是被赋予的新值），会传入赋值时的 `this` 对象。
       默认为 undefined
+
+
+
+### Object.defineProperties()
+
+* [Object.defineProperties | mdn](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperties)
+
+> ```js
+> Object.defineProperties(obj, props:object)
+> ```
 
 
 
@@ -519,6 +573,15 @@ console.log(products.latestBrowser); // 'Chrome'
 * [Set.prototype.add(value)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set/add)
 * [Set.prototype.delete(value)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set/delete)
 * [Set.prototype.has(value)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set/has)
+
+```js
+set = new Set([1,2,3])
+// Set(3) {1, 2, 3}
+set.forEach(console.log) // (v,v,set)
+// 1 1 Set(3) {1, 2, 3}
+// 2 2 Set(3) {1, 2, 3}
+// 3 3 Set(3) {1, 2, 3}
+```
 
 
 
@@ -1067,8 +1130,15 @@ Number.isInteger(NaN)
 #### String方法
 
 * [anchor()](https://www.w3school.com.cn/jsref/jsref_anchor.asp)
-
 * [charAt()](https://www.w3school.com.cn/jsref/jsref_charAt.asp)
+
+> charAt() 方法可返回指定位置的字符
+
+```js
+stringObject.charAt(index)
+```
+
+
 
 * [charCodeAt()](https://www.w3school.com.cn/jsref/jsref_charCodeAt.asp)
 
