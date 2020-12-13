@@ -2,6 +2,25 @@
 
 
 
+
+
+## 渐变圆角边框
+
+* 原因：Border-image: 可以实现渐变，但border-raduis 圆角属性，则会失效。
+* 方案
+  * 可以外套盒子padding实现该边框
+* 提升：如果还要内容背景有透明度
+  * 那只能用边框图片 (border-image) 切图了，降低了自适应能力。
+
+
+
+## 渐变 gradients
+
+* [CSS3 渐变（Gradients）| runoob](https://www.runoob.com/css3/css3-gradients.html)
+* 
+
+
+
 ## 布局模式
 
 ###  圣杯布局和双飞翼布局

@@ -18,6 +18,10 @@
 
 
 
+* rejected
+
+> Promise 内部错误 或者reject() 没有被捕获，将抛出错误。
+
 
 
 ## 手撕promise

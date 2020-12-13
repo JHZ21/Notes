@@ -1,13 +1,39 @@
 # vs code 经验
 
+## Windows <=> Mac 
+
+| Windows | Mac   |
+| ------- | ----- |
+| Shift   | ⇧     |
+| Control | ⌃     |
+| option  | ⌥     |
+| Command | ⌘     |
+| 上/下   | ↑ / ↓ |
+| 左/右   | ← / → |
 
 
-## 回退到上个编辑位置
 
-- 简答：
+## 快捷命令
 
-- - Windows：（好像是）**Alt + ←**
-  - Mac：**Control + -**
+| 作用                    | Mac         | Windows |
+| ----------------------- | ----------- | ------- |
+| 回退到上个编辑位置      | Control + - | Alt + ← |
+| Show Command Palette    | ⇧⌘P, F1     |         |
+| Quick Open, Go to File… | ⌘P          |         |
+| User Settings           | ⌘,          |         |
+| Keyboard Shortcuts      | ⌘K ⌘S       |         |
+| Save                    | ⌘S          |         |
+| Save As...              | ⇧⌘S         |         |
+| Open File...            | ⌘O          |         |
+| New File                | ⌘N          |         |
+| Move line up/down       | ⌥ ↑/↓       |         |
+|                         |             |         |
+|                         |             |         |
+|                         |             |         |
+|                         |             |         |
+|                         |             |         |
+|                         |             |         |
+|                         |             |         |
 
 
 

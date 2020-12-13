@@ -355,9 +355,13 @@ stash@{2}: WIP on dev: 5de3141 dev 3
 ```
 git stash  // 工作区干净了
 git stash push -m <message> // 隐藏并输入注释
+
+git stash save "message"
 ```
 
-
+* 不能储存新增的文件
+  * 只会储存代码的内容改动，因为不在git版本控制中
+  * 解决方案：`git add .` 添加到暂存区。
 
 ### 恢复工作现场
 
@@ -367,6 +371,16 @@ git stash pop // 恢复第一个(最新的)stash 并删除
 // git stash ( pop | apply ) [-- index] 
 git stash apply -- 0  //恢复下标为0的stash
 ```
+
+
+
+### 比较 储存的改动
+
+```
+git stash show -- idnex // 默认第0个
+```
+
+
 
 
 
