@@ -1,5 +1,9 @@
 # Vue SSR
 
+## 文档 
+
+* [Vue SSR 指南](https://ssr.vuejs.org/zh/#%E4%BB%80%E4%B9%88%E6%98%AF%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E6%B8%B2%E6%9F%93-ssr-%EF%BC%9F)
+
 
 
 * 数据响应
@@ -102,5 +106,113 @@ app.$mount('#app', true)
 
 ## Head 管理
 
+### 标题管理
 
+* 从 $options 上获取 title 数据
+
+  ```js
+  function getTitle (vm) {
+    // 组件可以提供一个 `title` 选项
+    // 此选项可以是一个字符串或函数
+    const { title } = vm.$options
+    if (title) {
+      return typeof title === 'function'
+        ? title.call(vm)
+        : title
+    }
+  }
+  ```
+
+* 客户端或服务端 获取数据
+
+```js
+const serverTitleMixin = {
+  created () {
+    const title = getTitle(this)
+    if (title) {
+      this.$ssrContext.title = title
+    }
+  }
+}
+
+const clientTitleMixin = {
+  mounted () {
+    const title = getTitle(this)
+    if (title) {
+      document.title = title
+    }
+  }
+}
+
+// 可以通过 `webpack.DefinePlugin` 注入 `VUE_ENV`
+export default process.env.VUE_ENV === 'server'
+  ? serverTitleMixin
+  : clientTitleMixin
+```
+
+* 在路由组件中， 混入
+
+```js
+  mixins: [titleMixin],
+```
+
+* 使用相同的策略，你可以轻松地将此 mixin 扩展为通用的头部管理工具 (generic head management utility)。
+
+## 缓存
+
+### 页面级缓存
+
+```js
+const microCache = LRU({
+  max: 100,
+  maxAge: 1000 // 重要提示：条目在 1 秒后过期。
+})
+```
+
+### 组件级缓存
+
+* 
+
+```js
+const LRU = require('lru-cache')
+
+const renderer = createRenderer({
+  cache: LRU({
+    max: 10000,
+    maxAge: ...
+  })
+})
+```
+
+* 设置 serverCacheKey 函数来判断是否使用缓存
+
+```js
+export default {
+  name: 'item', // 必填选项
+  props: ['item'],
+  serverCacheKey: props => props.item.id,
+  render (h) {
+    return h('div', this.item.id)
+  }
+}
+```
+
+* 何时使用组件缓存
+  * 不应该使用
+    * 依赖全局状态的子组件
+    * 对渲染上下文产生副作用的子组件
+  * 小心使用组件缓存来解决性能瓶颈
+    * 在大的 `v-for` 列表中重复出现的组件
+
+```js
+serverCacheKey: props => props.item.id + '::' + props.item.last_updated
+```
+
+## 流式渲染
+
+* 
+
+## 在非node.js环境中使用
+
+* 
 

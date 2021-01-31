@@ -2,6 +2,43 @@
 
 
 
+## inline-block 之间的空隙
+
+* 解决
+  * Line-height: 0;
+  * [inline-block空隙怎么解决](https://www.cnblogs.com/leena/p/6930175.html)
+
+
+
+## 禁止文字被选中
+
+* [css禁止选中文本怎么设置？](https://www.html.cn/qa/css3/13811.html)
+
+* pc端：
+
+```css
+.not-select{
+    -moz-user-select:none; /*火狐*/
+    -webkit-user-select:none; /*webkit浏览器*/
+    -ms-user-select:none; /*IE10*/
+    -khtml-user-select:none; /*早期浏览器*/
+    user-select:none;
+}
+```
+
+* 移动：
+
+```css
+.no-touch {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+```
+
 
 
 ## 渐变圆角边框
@@ -47,7 +84,15 @@
 >
 > 中文常译为块级格式化上下文。是 W3C [CSS](https://www.2cto.com/kf/qianduan/css/) 2.1 规范中的一个概念，它决定了元素如何对其内容进行定位，以及与其他元素的关系和相互作用。 在进行盒子元素布局的时候，BFC提供了一个环境，在这个环境中按照一定规则进行布局不会影响到其它环境中的布局。
 
+
+
 * [什么是BFC?形成 BFC 的条件是什么？BFC常见作用详解](http://www.10qianwan.com/articledetail/61505.html)
+
+* [margin重叠与穿透问题](https://www.cnblogs.com/rencoo/p/11628775.html)
+
+### 特点
+
+* BFC是一个绝对的独立空间，它的内部元素是不会影响到外部元素的
 
 
 

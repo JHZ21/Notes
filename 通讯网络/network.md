@@ -14,7 +14,21 @@
 * [HTTP协议原理详解及应用]( https://juejin.im/post/5b30dd496fb9a00e925bde2e )
 * [JSON Web Token 入门教程]( http://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html )
 * [💗前端需要了解的计算机网络知识， 这一篇就够了！(图文并茂，万字长文，点赞收藏哦！)](https://juejin.im/post/6844904079974465544)
-* 
+* [什么是CDN | 知乎](https://www.zhihu.com/question/37353035)
+
+
+
+## CDN
+
+> **全称**:Content Delivery Network或Content Ddistribute Network，即内容分发网络
+
+* 基本思路：
+
+> 通过在网络各处放置节点服务器，在现有网络之上构成一层智能虚拟网络，它能实时将请求重新导向离用户最近的服务节点，通过分析网络流量、各节点连接和负载状况以及离用户的距离和响应时间等综合信息。
+
+* 目的：
+
+> 
 
 
 

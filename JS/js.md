@@ -2,10 +2,32 @@
 
 
 
+## js 禁止上下文菜单，复制
+
+
+
+* [JS实现网站内容的禁止复制和粘贴、另存为](https://www.cnblogs.com/web100/p/js-enable-copy.html)
+
+```js
+document.oncontextmenu=function(evt){
+  evt.preventDefault();
+}
+
+document.onselectstart=function(evt){
+ evt.preventDefault();
+};
+```
+
+
+
+
+
 ## 链接
 
 * [JavaScript 和 HTML DOM 参考手册 | RUNOOB](https://www.runoob.com/jsref/jsref-tutorial.html)
 * [JavaScript 参考手册 | W3school](https://www.w3school.com.cn/jsref/index.asp)
+
+
 
 ## ?.
 
@@ -58,6 +80,31 @@ false ?? 1
 // 1
 0 ?? 1
 // 0
+```
+
+
+
+## ~~
+
+* [我所理解的JS ~~运算符](https://blog.csdn.net/weixin_37710888/article/details/82587296)
+
+* 去小数部分
+
+```js
+// 1、数字类型的字符串可以转化为纯数字
+var a='123';
+console.log(~~a); //输出123
+// 2、字符串中带了其他字母，符号，或者其他除数字外的东西，一律输出 Number类型的0
+var a='asd';
+console.log(~~a); //输出0
+// 3、任何boolen类型的，如果为TRUE则输出1，FALSE输出0；
+var a=1==1;
+console.log(~~a);//输出1
+// 4、特殊类型，转化为Boolean是true的输出1，转化为boolean是false的输出0；
+var a=undefined;
+console.log(~~a);//输出0
+var b=！undefined;
+console.log(~~b);//输出1
 ```
 
 
@@ -233,6 +280,14 @@ document.all
 ```
 
 >尽管规范允许为非标准的外来对象自定义类型标签，但它要求这些类型标签与已有的不同。`document.all` 的类型标签为 `'undefined'` 的例子在 Web 领域中被归类为对原 ECMA JavaScript 标准的“故意侵犯”。
+
+
+
+## Reflect
+
+*  =>  es6
+
+
 
 
 
@@ -981,6 +1036,20 @@ array.map(function(currentValue,index,arr), thisValue)
 * Date.now()
 
 > 返回当前时间戳 ( number)
+
+```js
+d = new Date("1970-1-2") // 参数字符串
+d.getTime()	// 57600000
+getFullYear()	从 Date 对象以四位数字返回年份。
+getMonth()	从 Date 对象返回月份 (0 ~ 11)。
+getDate()	从 Date 对象返回一个月中的某一天 (1 ~ 31)。
+getDay()	从 Date 对象返回一周中的某一天 (0 ~ 6)。
+getHours()	返回 Date 对象的小时 (0 ~ 23)。
+getMinutes()	返回 Date 对象的分钟 (0 ~ 59)。
+getSeconds()	返回 Date 对象的秒数 (0 ~ 59)。
+getTime()	返回 1970 年 1 月 1 日至今的毫秒数。
+getTimezoneOffset()	返回本地时间与格林威治标准时间 (GMT) 的分钟差。
+```
 
 
 

@@ -1,20 +1,8 @@
 # Vue 3
 
-```mermaid
-graph TD
-A[方形] -->B(圆角)
+* [v3中文文档](https://v3.cn.vuejs.org/guide/introduction.html)
 
-  B --> C{条件a}
-
-  C -->|a=1| D[结果1]
-
-  C -->|a=2| E[结果2]
-  C -->|a=2| E[结果3]
-
-  F[竖向流程图]
-```
-
-
+* [你可以手写Vue3的响应式原理吗？| 掘金 ｜前端森林](https://juejin.cn/post/6921530159099510791#comment)
 
 
 
@@ -54,3 +42,45 @@ A[方形] -->B(圆角)
 * data
 * props
 * ctx
+
+
+
+## watch 侦听器
+
+* watch api
+  * () => reactive()
+  
+    > 侦听一个 getter 函数,返回一个响应式对象: () => state.count
+
+  * ref() 
+  
+    > 侦听一个响应式对象: count
+  
+  * [ref(), ref(), ...]
+  
+    > 侦听多个响应式对象: [count, count2]
+  
+* doWatch
+  * 标准化 source 
+  * 构造 applyCb 回调函数 
+  * 创建 scheduler 时序执行函数 
+  *  创建 effect 副作用函数 
+  *  返回侦听器销毁函数 
+
+* Watch 减少 traverse 次数
+
+  * 侦听 state.count.a.b
+
+  ```js
+  // 
+  watch(state.count.a, (newVal, oldVal) => { 
+    console.log(newVal) 
+  }) 
+  // 更优
+  watch(() => state.count.a.b, (newVal, oldVal) => { 
+    console.log(newVal) 
+  }) 
+  ```
+
+  
+

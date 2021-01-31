@@ -2,6 +2,34 @@
 
 
 
+## svg
+
+### 使用
+
+* [使用SVG symbols建立图标系统](https://www.cnblogs.com/liangxuru/p/7159850.html)
+
+```html
+<body>
+    <svg style="display: none;">
+        <symbol viewBox="0 0 24 24" id="heart">
+            <path fill="#E86C60" d="M17,0c-1.9,0-3.7,0.8-5,2.1C10.7,0.8,8.9,0,7,0C3.1,0,0,3.1,0,7c0,6.4,10.9,15.4,11.4,15.8 c0.2,0.2,0.4,0.2,0.6,0.2s0.4-0.1,0.6-0.2C13.1,22.4,24,13.4,24,7C24,3.1,20.9,0,17,0z"></path>
+        </symbol>
+    </svg>
+
+    <svg>
+        <use xlink:href="#heart"/> <!-- this is our visible icon -->
+    </svg>
+</body>
+```
+
+
+
+## input
+
+* [input type="file"属性详解](https://www.w3h5.com/post/181.html)
+
+* Ios 上传视频input, 设置capture="camcorder" ，系统可以直接调用摄像机
+
 ### img 的 alt 和 title
 
 * alt是给搜索引擎识别，在图像无法显示时的替代文本

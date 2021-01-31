@@ -1,6 +1,6 @@
 # Vue-Router 
 
-
+- router 对应路由的组件才可以触发 组件内守卫
 
 ## hash模式与history模式与实现
 

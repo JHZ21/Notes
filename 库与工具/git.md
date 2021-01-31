@@ -229,8 +229,6 @@ git log --graph --pretty=oneline --abbrev-commit
 
 ## 分支管理
 
-
-
 ### 创建分支，切换分支
 
 ```
@@ -489,7 +487,23 @@ git push -u origin master
 
 
 
+### fetch : 取来
+
+```
+git fetch <远程主机名> //这个命令将某个远程主机的更新全部取回本地
+```
+
+```
+git fetch <远程主机名> <分支名> //注意之间有空格
+// exmaple
+git fetch origin master
+```
+
+ 
+
 ###  pull:  拉取合并
+
+> git pull = git fetch + git merge
 
 ```
 git pull
@@ -574,6 +588,10 @@ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Crese
         br = branch -v
         co = checkout
         ce = config --global --edit
+        cl = clone
         am = commit -am
+        ss = stash save
+        sa = stash apply
+        sl = stash list
 ```
 

@@ -1,6 +1,8 @@
 # mac
 
+* ~/.zshrc
 
+* [MAC常用终端命令行](https://www.jianshu.com/p/4f66b1468646)
 
 ## 快捷键
 
@@ -21,7 +23,7 @@
 | 隐藏窗口                              | Command+H              |
 | 最小化窗口                            | Command+M              |
 | 新建                                  | Command+N              |
-|                                       |                        |
+| 删除光标之前整行内容                  | Command+delete         |
 |                                       |                        |
 
 

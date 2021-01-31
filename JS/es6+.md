@@ -1,5 +1,61 @@
 # es6+
 
+## Reflect
+
+> * **Reflect** 是一个内置的对象，它提供拦截 JavaScript 操作的方法。`Reflect`不是一个函数，因此它是不可构造的。
+>
+> * `Reflect`的所有属性和方法都是静态的（就像[`Math`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math)对象）
+
+* [Reflect ｜ mdn](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect)
+
+* 设计目的
+  * 将`Object`对象的一些明显属于语言内部的方法（比如`Object.defineProperty`），放到`Reflect`对象上。
+  * 让`Object`操作都变成函数行为。
+  * 修改某些`Object`方法的返回结果，让其变得更合理。
+  * `Reflect`对象的方法与`Proxy`对象的方法一一对应
+  * [js-ES6学习笔记-Reflect ｜good](https://www.cnblogs.com/zczhangcui/p/6486582.html)
+
+
+
+### get()
+
+* [Reflect.get() | mdn](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect/get)
+
+``` js
+Reflect.get(target, propertyKey[, receiver])
+```
+
+> 等于target.propertyKey ，但转为函数形式，并可以传入receiver
+
+* 如果`target`对象中指定了`getter`，`receiver`则为`getter`调用时的`this`值。
+
+* examples
+
+```js
+// 获取属性
+Reflect.get(['zero', 'one'], 1)  // "one"
+
+// 传入 receiver
+let obj = new Proxy(x, {
+  get(t, prop, receiver) {
+    return receiver[prop] + 'bar'  // Proxy get(target, prop, receiver)
+  }
+})
+Reflect.get(obj, 'foo', y) // "3bar"
+```
+
+
+
+### set()
+
+* [Reflect.set() | mdn](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect/set)
+
+* ```js
+  Reflect.set(target, propertyKey, value[, receiver])
+  ```
+
+* receiver 存在则替换掉 setter 调用时的 **this** 值。
+
 
 
 ## es2017

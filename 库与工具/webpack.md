@@ -1,6 +1,6 @@
 # Webpack
 
-> [webpack  中午文档](https://www.webpackjs.com/)
+> [webpack  中文文档](https://www.webpackjs.com/)
 
 
 

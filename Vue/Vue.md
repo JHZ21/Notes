@@ -6,6 +6,48 @@
 
 
 
+## vue 项目
+
+* Vue核心技术 Vue+Vue-Router+Vuex+SSR实战精讲（无密版）
+
+>链接: https://pan.baidu.com/s/1ts0-Cip4IInss28QjGkOWQ 提取码: be4y 复制这段内容后打开百度网盘手机App，操作更方便哦
+
+* [vue-typescript-admin](https://armour.github.io/vue-typescript-admin-docs/zh/guide/#%E5%8A%9F%E8%83%BD)
+
+* 幕客书城项目
+
+> 链接: https://pan.baidu.com/s/1FN1K5RfytkFLM3fMOj91pQ 提取码: faxm 复制这段内容后打开百度网盘手机App，操作更方便哦
+
+* Vue2.5开发去哪儿网App 从零基础入门到实战项目
+
+> 链接: https://pan.baidu.com/s/1F32ys86-r7tnDOgZmPUVPw 提取码: gs6w 复制这段内容后打开百度网盘手机App，操作更方便哦
+
+* Vue.js 源码全方位深入解析
+
+> 链接: https://pan.baidu.com/s/1YB0_cwoZsvkox8TEDoqMmw 提取码: 4bhf 复制这段内容后打开百度网盘手机App，操作更方便哦
+
+* 从基础到实战 手把手带你掌握新版Webpack4
+
+>  链接: https://pan.baidu.com/s/1Tqf4RTQCy8GZ5BPu1Hgelw 提取码: npbj 复制这段内容后打开百度网盘手机App，操作更方便哦
+
+
+
+## Vue.use & install
+
+> Vue.use(A) , 就是 A.install(Vue)
+
+```js
+const component = {
+    install:function(Vue){
+        Vue.component('component-name',component)
+    }  
+}
+// 导出该组件
+export default component
+```
+
+
+
 ## $nextTick
 
 
@@ -363,6 +405,10 @@ steps_objs: StepsObjType[] = [] // 数据修改时，视图面可以响应
 
 
 ## watch
+
+> 通过 $watch API 创建的侦听器 watcher 会返回一个 unwatch 函数，你可以随时执行它来停止这个 watcher 对数据的侦听
+>
+> 对于 watch 选项创建的侦听器，它会随着组件的销毁而停止对数据的侦听。
 
 ```javascript
 watch:{
