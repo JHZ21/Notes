@@ -1,5 +1,13 @@
 # es6+
 
+
+
+## ?.  ~~  |>
+
+* [使用js操作符优化代码( ?. )( ~~ )( |＞ )](https://www.cnblogs.com/huangguofeng/p/13735856.html)
+
+
+
 ## Reflect
 
 > * **Reflect** 是一个内置的对象，它提供拦截 JavaScript 操作的方法。`Reflect`不是一个函数，因此它是不可构造的。

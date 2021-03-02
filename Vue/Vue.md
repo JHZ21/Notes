@@ -4,6 +4,10 @@
 * [30 道 Vue 面试题，内含详细讲解（涵盖入门到精通，自测 Vue 掌握程度）| 掘金](https://juejin.im/post/5d59f2a451882549be53b170)
 * [手撕vue源码](https://github.com/canfoo/self-vue)
 
+* [揭秘 Vue2 九个性能优化技巧](https://juejin.cn/post/6922641008106668045)
+
+
+
 
 
 ## vue 项目

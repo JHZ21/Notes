@@ -132,6 +132,20 @@
 
 
 
+## 文件窗口
+
+* [vs Code打开新的文件会覆盖窗口中的,怎么改](https://blog.csdn.net/qq_22551385/article/details/82287502?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control)
+
+  
+
+* 单击文件名-预览模式
+
+  > 只会覆盖原来的文件
+
+* 双击文件名-打开新窗口
+
+  
+
 
 
 ## 重启vs code 

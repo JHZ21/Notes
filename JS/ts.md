@@ -8,6 +8,10 @@
 
 
 
+## ! 非空断言操作符
+
+> 在变量后面添加一个 ! ,就会忽略  `undefined | null` 类型
+
 
 
 ## Unions and Intersection Types
